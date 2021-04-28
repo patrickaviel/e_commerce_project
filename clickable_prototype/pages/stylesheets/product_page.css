@@ -4,10 +4,11 @@
     margin: 0;
     padding: 0;
 }
-body{
-
-   
-}
+/* NAVBAR */
 h1{
     font-family: 'Quicksand', sans-serif;
 }
+ul li{
+    list-style-type: none;
+}
+
