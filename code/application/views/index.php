@@ -19,7 +19,7 @@
             <div class="container-fluid">
               <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                 <a href="index.html" class="d-flex align-items-center mb-lg-0 text-white text-decoration-none">
-                  <img src="<?php base_url() ?>/assets/images/cover.png"class="" width="150px" >
+                  <img src="<?php base_url() ?>/assets/images/cover.png" class="" width="150px" >
                 </a>
           
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
@@ -27,7 +27,7 @@
                 </ul>
           
                 <div class="text-end">
-                  <a href="login_page.html" type="button" class="btn btn-outline-light me-2">Login</a>
+                  <a href="users/login_page" type="button" class="btn btn-outline-light me-2">Login</a>
                   <a href="registration_page.html" type="button" class="btn btn-warning">Sign-up</a>
                 </div>
               </div>
