@@ -21,7 +21,7 @@
         <header class="p-3 bg-dark text-white">
             <div class="container-fluid">
               <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                <a href="index.html" class="d-flex align-items-center mb-lg-0 text-white text-decoration-none">
+                <a href="<?php base_url(); ?>" class="d-flex align-items-center mb-lg-0 text-white text-decoration-none">
                   <img src="<?php base_url() ?>/assets/images/cover.png" class="" width="150px" >
                 </a>
           
@@ -31,8 +31,8 @@
                 </ul>
           
                 <div class="text-end">
-                    <a href="users/login_page" type="button" class="btn btn-outline-light me-2">Login</a>
-                    <a href="users/registration_page" type="button" class="btn btn-warning">Sign-up</a>
+                    <a href="login" type="button" class="btn btn-outline-light me-2">Login</a>
+                    <a href="register" type="button" class="btn btn-warning">Sign-up</a>
                 </div>
               </div>
             </div>
