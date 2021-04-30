@@ -61,9 +61,11 @@ class Users extends CI_Controller {
             }
         } 
     }
+
     public function admin_login_page(){
         $this->load->view('admins/admin_login');
     }
+
     public function admin_login(){
         
     }
