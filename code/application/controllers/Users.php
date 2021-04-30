@@ -9,5 +9,11 @@ class Users extends CI_Controller {
     public function registration_page() {
 		$this->load->view('users/user_registration');
 	}
+    public function register() {
+
+    }
+    public function login() {
+
+    }
 
 }
