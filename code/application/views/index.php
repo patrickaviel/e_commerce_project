@@ -28,7 +28,7 @@
           
                 <div class="text-end">
                   <a href="users/login_page" type="button" class="btn btn-outline-light me-2">Login</a>
-                  <a href="registration_page.html" type="button" class="btn btn-warning">Sign-up</a>
+                  <a href="users/registration_page" type="button" class="btn btn-warning">Sign-up</a>
                 </div>
               </div>
             </div>
