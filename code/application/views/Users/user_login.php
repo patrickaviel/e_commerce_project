@@ -62,7 +62,7 @@
                             </div>
                         <button class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
                         <hr class="my-4">
-                        <p class="mb-0">Dont have an account?<a href="registration_page.html">Register Now!</a></p>
+                        <p class="mb-0">Dont have an account?<a href="register">Register Now!</a></p>
                         <p class="mb-0">Seller? <a href="admin/login">Login as Seller</a></p>
                         </form>
                     </div>
