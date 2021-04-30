@@ -26,13 +26,19 @@
                 </a>
           
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                  <li><a href="#" class="nav-link px-2 text-white">Products</a></li>
+                  <!-- <li><a href="#" class="nav-link px-2 text-white">Products</a></li> -->
                 </ul>
-          
+
                 <div class="text-end">
-                    <a href="checkout_page.html" class="p-3 carts"><i class="fas fa-shopping-cart"></i> Cart</a>
+<?php           if(is_null($this->session->userdata('user_id'))){   ?>
                     <a href="login" type="button" class="btn btn-outline-light me-2">Login</a>
                     <a href="register" type="button" class="btn btn-warning">Sign-up</a>
+                    
+<?php           }else{                                              ?>
+                    <p class="d-inline">Hello, <?= $this->session->userdata('user_first_name')?>!</p>
+                    <a href="checkout_page.html" class="p-3 carts"><i class="fas fa-shopping-cart"></i> Cart</a>
+                    <a href="logout" type="button" class="btn btn-warning">Logout</a>
+<?php           }                                                   ?>
                 </div>
               </div>
             </div>
@@ -61,6 +67,7 @@
                         </form>
                         <p class="lead mb-0 mt-3">Categories</p>
                         <ul class="">
+                            <li class="mb-2">All</li>
                             <li class="mb-2">T-Shirts</li>
                             <li class="mb-2">Shoes</li>
                             <li class="mb-2">Shorts</li>
