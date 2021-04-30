@@ -42,48 +42,59 @@
           <!-- Navbar End -->
 
         <!-- Form -->
+        
         <div class="position-relative overflow-hidden bg-light banner-bgs">
             <form action="users/register" method="POST" class="row g-3 hero-style w-50 mx-auto p-4 m-4">
                 <h1 class="display-6">Register Account</h1>
                 <div class="col-md-12">
                     <label for="email" class="form-label">Email</label>
                     <input type="email" class="form-control" id="email" name="email" placeholder="xyz@example.com">
+                    <?php echo form_error('email'); ?>
                 </div>
                 <div class="col-md-6">
                     <label for="first_name" class="form-label">First Name</label>
                     <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Juan">
+                    <?php echo form_error('first_name'); ?>
                 </div>
                 <div class="col-md-6">
                     <label for="last_name" class="form-label">Last Name</label>
                     <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Dela Cruz">
+                    <?php echo form_error('first_name'); ?>
                 </div>
                 <div class="col-md-6">
                     <label for="password" class="form-label">Password</label>
                     <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password">
+                    <?php echo form_error('password'); ?>
                 </div>
                 <div class="col-md-6">
                     <label for="c_password" class="form-label">Confirm Password</label>
                     <input type="password" class="form-control" id="c_password" name="c_password" placeholder="Enter your password">
+                    <?php echo form_error('c_password'); ?>
                 </div>
                 <div class="col-2">
                     <label for="house_no" class="form-label">House No</label>
                     <input type="text" class="form-control" id="house_no" name="house_no" placeholder="1234">
+                    <?php echo form_error('house_no'); ?>
                 </div>
                 <div class="col-5">
                     <label for="barangay" class="form-label">Barangay</label>
                     <input type="text" class="form-control" id="barangay" name="barangay" placeholder=" Main St">
+                    <?php echo form_error('barangay'); ?>
                 </div>
                 <div class="col-md-5">
                     <label for="municipality" class="form-label">Municipality</label>
                     <input type="text" class="form-control" id="municipality" name="municipality" placeholder="Ex: San Fabian">
+                    <?php echo form_error('municipality'); ?>
                 </div>
                 <div class="col-md-10">
                     <label for="province" class="form-label">Province</label>
                     <input type="text" class="form-control" id="province" name="province" placeholder="Ex: Pangasinan">
+                    <?php echo form_error('province'); ?>
                 </div>
                 <div class="col-md-2">
                     <label for="zip" class="form-label">Zip Code</label>
                     <input type="text" class="form-control" id="zip" name="zip" placeholder="Code">
+                    <?php echo form_error('zip'); ?>
                 </div>
                 <div class="col-12">
                 <input type="submit" class="btn btn-primary mt-3" value="Create Account">
