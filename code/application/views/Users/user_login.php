@@ -47,7 +47,7 @@
             <div class="container col-xl-10 col-xxl-8 px-4 py-1 mt-3 hero-style">
                 <div class="row align-items-center g-5 py-5">
                     <div class="col-lg-7 text-center text-lg-start">
-                        <h1 class="display-4 fw-bold lh-1 mb-3">Welcome to Shoepify!</h1>
+                        <h1 class="display-4 fw-bold lh-1 mb-3">Welcome to E-Shoepify!</h1>
                         <p class="col-lg-10 fs-4">Login to start viewing great deals!</p>
                     </div>
                     <div class="col-10 mx-auto col-lg-5">
@@ -63,6 +63,7 @@
                         <button class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
                         <hr class="my-4">
                         <p class="mb-0">Dont have an account?<a href="registration_page.html">Register Now!</a></p>
+                        <p class="mb-0">Seller? <a href="admin/login">Login as Seller</a></p>
                         </form>
                     </div>
                 </div>
