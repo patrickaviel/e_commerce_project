@@ -45,21 +45,22 @@
         
         <div class="position-relative overflow-hidden bg-light banner-bgs">
             <form action="users/register" method="POST" class="row g-3 hero-style w-50 mx-auto p-4 m-4">
+                <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?=$this->security->get_csrf_hash();?>" />
                 <h1 class="display-6">Register Account</h1>
                 <div class="col-md-12">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="xyz@example.com">
+                    <input type="email" class="form-control" id="email" name="email" value="<?php echo set_value('email'); ?>" placeholder="xyz@example.com">
                     <?php echo form_error('email'); ?>
                 </div>
                 <div class="col-md-6">
                     <label for="first_name" class="form-label">First Name</label>
-                    <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Juan">
+                    <input type="text" class="form-control" id="first_name" name="first_name" value="<?php echo set_value('first_name'); ?>" placeholder="Juan">
                     <?php echo form_error('first_name'); ?>
                 </div>
                 <div class="col-md-6">
                     <label for="last_name" class="form-label">Last Name</label>
-                    <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Dela Cruz">
-                    <?php echo form_error('first_name'); ?>
+                    <input type="text" class="form-control" id="last_name" name="last_name" value="<?php echo set_value('last_name'); ?>" placeholder="Dela Cruz">
+                    <?php echo form_error('last_name'); ?>
                 </div>
                 <div class="col-md-6">
                     <label for="password" class="form-label">Password</label>
@@ -73,27 +74,27 @@
                 </div>
                 <div class="col-2">
                     <label for="house_no" class="form-label">House No</label>
-                    <input type="text" class="form-control" id="house_no" name="house_no" placeholder="1234">
+                    <input type="text" class="form-control" id="house_no" name="house_no" value="<?php echo set_value('house_no'); ?>" placeholder="1234">
                     <?php echo form_error('house_no'); ?>
                 </div>
                 <div class="col-5">
                     <label for="barangay" class="form-label">Barangay</label>
-                    <input type="text" class="form-control" id="barangay" name="barangay" placeholder=" Main St">
+                    <input type="text" class="form-control" id="barangay" name="barangay" value="<?php echo set_value('barangay'); ?>" placeholder="Main St">
                     <?php echo form_error('barangay'); ?>
                 </div>
                 <div class="col-md-5">
                     <label for="municipality" class="form-label">Municipality</label>
-                    <input type="text" class="form-control" id="municipality" name="municipality" placeholder="Ex: San Fabian">
+                    <input type="text" class="form-control" id="municipality" name="municipality" value="<?php echo set_value('municipality'); ?>" placeholder="Ex: San Fabian">
                     <?php echo form_error('municipality'); ?>
                 </div>
                 <div class="col-md-10">
                     <label for="province" class="form-label">Province</label>
-                    <input type="text" class="form-control" id="province" name="province" placeholder="Ex: Pangasinan">
+                    <input type="text" class="form-control" id="province" name="province" value="<?php echo set_value('province'); ?>" placeholder="Ex: Pangasinan">
                     <?php echo form_error('province'); ?>
                 </div>
                 <div class="col-md-2">
                     <label for="zip" class="form-label">Zip Code</label>
-                    <input type="text" class="form-control" id="zip" name="zip" placeholder="Code">
+                    <input type="text" class="form-control" id="zip" name="zip" value="<?php echo set_value('zip'); ?>" placeholder="Code">
                     <?php echo form_error('zip'); ?>
                 </div>
                 <div class="col-12">
