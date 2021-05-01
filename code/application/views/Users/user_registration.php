@@ -23,7 +23,7 @@
         <header class="p-3 bg-dark text-white">
             <div class="container-fluid">
                 <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                    <a href="<?php base_url(); ?>" class="d-flex align-items-center mb-lg-0 text-white text-decoration-none">
+                    <a href="/" class="d-flex align-items-center mb-lg-0 text-white text-decoration-none">
                         <img src="<?php base_url() ?>/assets/images/cover.png" class="" width="150px" >
                     </a>
             
@@ -55,7 +55,7 @@
                 <div class="col-md-4">
                     <label for="contact_no" class="form-label">Contact No</label>
                     <input type="text" class="form-control" id="contact_no" name="contact_no" value="<?php echo set_value('contact_no'); ?>" placeholder="Ex: 09123456789">
-                    <?php echo form_error('email'); ?>
+                    <?php echo form_error('contact_no'); ?>
                 </div>
                 <div class="col-md-6">
                     <label for="first_name" class="form-label">First Name</label>
