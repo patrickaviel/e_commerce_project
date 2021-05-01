@@ -31,8 +31,9 @@
                 <div class="d-flex justify-content-center">
                     <input type="submit" class="btn btn-primary w-50" value="Log In">
                 </div>
+                <p class="mt-3">Dont have a seller account? <a href="/admin/register">Click here</a></p>
                
-                <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
+                <p class="mt-3 mb-3 text-muted text-center">&copy; 2021</p>
             </form>
         </main>
     </div>
