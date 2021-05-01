@@ -88,5 +88,26 @@ class User_Model extends CI_Model {
         }
     }
 
+    function create_admin_user($data) {
+        // Password encryption
+        $salt = bin2hex(openssl_random_pseudo_bytes(22));
+        $password = $this->security->xss_clean($data['password']);
+        $encrypted_password = md5($password . '' . $salt);
+
+        $query = "INSERT INTO users (email,first_name,last_name,contact_no,password,salt,user_level,created_at) VALUES (?,?,?,?,?,?,?,?)";
+        $values = array(
+                    $this->security->xss_clean($data['email']), 
+                    $this->security->xss_clean($data['first_name']),
+                    $this->security->xss_clean($data['last_name']),
+                    $this->security->xss_clean($data['contact_no']),
+                    $encrypted_password,
+                    $salt,
+                    1,
+                    date("Y-m-d h:i:s")
+        ); 
+        $this->db->query($query,$values);
+        return $this->db->insert_id();
+    }
+
 
 }

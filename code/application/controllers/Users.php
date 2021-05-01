@@ -27,7 +27,7 @@ class Users extends CI_Controller {
             ->set_rules('zip','Zip','required|trim|numeric|min_length[3]');
 
         if($this->form_validation->run()==FALSE){
-           redirect('users/registration_page');
+            $this->load->view('Users/user_registration');
         }else{
             $form_data = $this->input->post();
             $user_id = $this->User_Model->create_user($form_data);
@@ -67,8 +67,36 @@ class Users extends CI_Controller {
         $this->load->view('admins/admin_login');
     }
 
-    public function admin_login(){
-        
+    public function admin_registration_page(){
+        $this->load->view('admins/admin_registration');
+    }
+
+    public function admin_register(){
+        $this->form_validation
+            ->set_rules('email','Email','required|trim|valid_email|is_unique[users.email]')
+            ->set_rules('contact_no','contact_no','required|trim|min_length[11]')
+            ->set_rules('first_name','First Name','required|trim|min_length[2]')
+            ->set_rules('last_name','Last Name','required|trim|min_length[2]')
+            ->set_rules('password','Password','required|trim|min_length[8]')
+            ->set_rules('c_password','Password','required|trim|min_length[8]|matches[password]')
+            ->set_rules('house_no','House No','required|trim|numeric|min_length[1]')
+            ->set_rules('barangay','Barangay','required|trim|min_length[3]')
+            ->set_rules('municipality','Municipality','required|trim|min_length[3]')
+            ->set_rules('province','Province','required|trim|min_length[3]')
+            ->set_rules('zip','Zip','required|trim|numeric|min_length[3]');
+
+        if($this->form_validation->run()==FALSE){
+            // var_dump(validation_errors());
+            $this->load->view('Admins/admin_registration');
+           
+        }else{
+            $form_data = $this->input->post();
+            $user_id = $this->User_Model->create_admin_user($form_data);
+            $this->User_Model->add_address($form_data,$user_id);
+            $user = $this->User_Model->get_user_by_id($user_id);
+            $this->session->set_userdata($user); 
+            redirect("products/products_page");
+        } 
     }
 
 }
