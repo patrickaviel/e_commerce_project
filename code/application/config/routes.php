@@ -7,6 +7,7 @@ $route['login'] = 'users/login_page';
 $route['register'] = 'users/registration_page';
 
 $route['admin/login'] = 'users/admin_login_page';
+$route['admin/register'] = 'users/admin_registration_page';
 
 $route['logout'] = 'products/logout';
 
