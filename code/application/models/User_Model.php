@@ -8,6 +8,7 @@ class User_Model extends CI_Model {
                             users.email as user_email,
                             users.first_name as user_first_name,
                             users.last_name as user_last_name,
+                            users.contact_no as user_contact_no,
                             users.user_level as user_user_level,
                             users.created_at as user_created_at,
                             users.updated_at as user_updated_at,
@@ -27,6 +28,7 @@ class User_Model extends CI_Model {
                             users.email as user_email,
                             users.first_name as user_first_name,
                             users.last_name as user_last_name,
+                            users.contact_no as user_contact_no,
                             users.user_level as user_user_level,
                             users.created_at as user_created_at,
                             users.updated_at as user_updated_at,
@@ -47,11 +49,12 @@ class User_Model extends CI_Model {
         $password = $this->security->xss_clean($data['password']);
         $encrypted_password = md5($password . '' . $salt);
 
-        $query = "INSERT INTO users (email,first_name,last_name,password,salt,user_level,created_at) VALUES (?,?,?,?,?,?,?)";
+        $query = "INSERT INTO users (email,first_name,last_name,contact_no,password,salt,user_level,created_at) VALUES (?,?,?,?,?,?,?,?)";
         $values = array(
                     $this->security->xss_clean($data['email']), 
                     $this->security->xss_clean($data['first_name']),
                     $this->security->xss_clean($data['last_name']),
+                    $this->security->xss_clean($data['contact_no']),
                     $encrypted_password,
                     $salt,
                     0,

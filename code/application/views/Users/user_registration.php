@@ -47,9 +47,14 @@
             <form action="users/register" method="POST" class="row g-3 hero-style w-50 mx-auto p-4 m-4">
                 <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?=$this->security->get_csrf_hash();?>" />
                 <h1 class="display-6">Register Account</h1>
-                <div class="col-md-12">
+                <div class="col-md-8">
                     <label for="email" class="form-label">Email</label>
                     <input type="email" class="form-control" id="email" name="email" value="<?php echo set_value('email'); ?>" placeholder="xyz@example.com">
+                    <?php echo form_error('email'); ?>
+                </div>
+                <div class="col-md-4">
+                    <label for="contact_no" class="form-label">Contact No</label>
+                    <input type="text" class="form-control" id="contact_no" name="contact_no" value="<?php echo set_value('contact_no'); ?>" placeholder="Ex: 09123456789">
                     <?php echo form_error('email'); ?>
                 </div>
                 <div class="col-md-6">

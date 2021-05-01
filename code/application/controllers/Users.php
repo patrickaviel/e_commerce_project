@@ -15,6 +15,7 @@ class Users extends CI_Controller {
     public function register() {
         $this->form_validation
             ->set_rules('email','Email','required|trim|valid_email|is_unique[users.email]')
+            ->set_rules('contact_no','contact_no','required|trim|min_length[11]')
             ->set_rules('first_name','First Name','required|trim|min_length[2]')
             ->set_rules('last_name','Last Name','required|trim|min_length[2]')
             ->set_rules('password','Password','required|trim|min_length[8]')
