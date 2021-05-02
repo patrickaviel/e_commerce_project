@@ -33,7 +33,6 @@
 <?php           if(is_null($this->session->userdata('user_id'))){   ?>
                     <a href="login" type="button" class="btn btn-outline-light me-2">Login</a>
                     <a href="register" type="button" class="btn btn-warning">Sign-up</a>
-                    
 <?php           }else{                                              ?>
                     <!-- <p class="d-inline"></p> -->
                     <a href="checkout_page.html" class="p-3 carts"><i class="fas fa-shopping-cart"></i> My Cart (0)</a>
