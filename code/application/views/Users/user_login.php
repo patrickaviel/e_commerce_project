@@ -69,7 +69,7 @@
                         
                         <hr class="my-4">
                         <p class="mb-0">Dont have an account?<a href="register">Register Now!</a></p>
-                        <p class="mb-0">Seller? <a href="admin/login">Login as Seller</a></p>
+                        <p class="mb-0">Admin? <a href="admin/login">Login as Admin</a></p>
                         </form>
                     </div>
                 </div>
