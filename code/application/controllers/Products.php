@@ -7,9 +7,5 @@ class Products extends CI_Controller {
         $this->load->view('Products/products_page');
     }
     
-    public function logout() {
-        $this->session->sess_destroy();
-        redirect(base_url());   
-    }
 
 }
