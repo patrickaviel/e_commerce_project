@@ -35,9 +35,20 @@
                     <a href="register" type="button" class="btn btn-warning">Sign-up</a>
                     
 <?php           }else{                                              ?>
-                    <p class="d-inline">Hello, <?= $this->session->userdata('user_first_name')?>!</p>
-                    <a href="checkout_page.html" class="p-3 carts"><i class="fas fa-shopping-cart"></i> Cart</a>
-                    <a href="logout" type="button" class="btn btn-warning">Logout</a>
+                    <!-- <p class="d-inline"></p> -->
+                    <a href="checkout_page.html" class="p-3 carts"><i class="fas fa-shopping-cart"></i> My Cart (0)</a>
+                    <!-- <a href="logout" type="button" class="btn btn-warning">Logout</a> -->
+                    <div class="dropdown d-inline">
+                        <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        Hello, <?= $this->session->userdata('user_first_name')?>!
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a href="logout" class="dropdown-item" type="button">My Orders</a></li>
+                            <li><a href="logout" class="dropdown-item" type="button">Edit Profile</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a href="logout" class="dropdown-item" type="button">Logout</a></li>
+                        </ul>
+                    </div>
 <?php           }                                                   ?>
                 </div>
               </div>
