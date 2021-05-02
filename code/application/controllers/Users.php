@@ -27,7 +27,7 @@ class Users extends CI_Controller {
             ->set_rules('zip','Zip','required|trim|numeric|min_length[3]');
 
         if($this->form_validation->run()==FALSE){
-            $this->load->view('Users/user_registration');
+            $this->load->view('users/user_login');
         }else{
             $form_data = $this->input->post();
             $user_id = $this->User_Model->create_user($form_data);
@@ -43,22 +43,23 @@ class Users extends CI_Controller {
             ->set_rules('password','First Name','required|trim');
 
         if($this->form_validation->run()==FALSE){
-            redirect('users/login_page');
+            $this->login_page();
         }else{
             
             $email = $this->input->post('email');
             $user= $this->User_Model->get_user_by_email($email);
 
-            $result = $this->user->validate_signin_match($user, $this->input->post('password'));
+            $result = $this->User_Model->validate_signin_match($user, $this->input->post('password'));
             if($result == "success") 
             {
-                $this->session->set_userdata($user);            
+                //$this->session->set_userdata($user);  
+                $this->session->set_userdata($user);           
                 redirect("products/products_page");
             }
             else 
             {
                 $this->session->set_flashdata('input_errors', $result);
-                redirect('users/login_page');
+                redirect("login");
             }
         } 
     }

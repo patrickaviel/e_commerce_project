@@ -29,6 +29,8 @@ class User_Model extends CI_Model {
                             users.first_name as user_first_name,
                             users.last_name as user_last_name,
                             users.contact_no as user_contact_no,
+                            users.password as user_password,
+                            users.salt as user_salt,
                             users.user_level as user_user_level,
                             users.created_at as user_created_at,
                             users.updated_at as user_updated_at,
@@ -79,9 +81,9 @@ class User_Model extends CI_Model {
     }
 
     function validate_signin_match($user, $password) {
-        $encrypted_password = md5($password . '' . $user['salt']);
-        if($user['password'] == $encrypted_password) {
-            return "Success";
+        $encrypted_password = md5($password . '' . $user['user_salt']);
+        if($user['user_password'] == $encrypted_password) {
+            return "success";
         }
         else {
             return "<small class='text-danger'>Please check your email/password.</small>";

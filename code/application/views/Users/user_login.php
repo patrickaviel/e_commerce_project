@@ -51,20 +51,22 @@
                         <p class="col-lg-10 fs-4">Login to start viewing great deals!</p>
                     </div>
                     <div class="col-10 mx-auto col-lg-5">
-                        <form action="users/login" method="POST" class="p-5 border rounded-3 bg-light">
+                        <form action="/users/login" method="POST" class="p-5 border rounded-3 bg-light">
+                        
                             <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?=$this->security->get_csrf_hash();?>" />
                             <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                <input type="email" class="form-control" id="floatingInput" name="email" value="<?php echo set_value('email'); ?>" placeholder="name@example.com">
                                 <label for="floatingInput">Email address</label>
                                 <?php echo form_error('email'); ?>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                                <input type="password" class="form-control" id="floatingPassword" name="password" value="<?php echo set_value('password'); ?>" placeholder="Password">
                                 <label for="floatingPassword">Password</label>
                                 <?php echo form_error('password'); ?>
                             </div>
+                            <?=$this->session->flashdata('input_errors');?>
                         <button class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
-                        <?=$this->session->flashdata('input_errors');?>
+                        
                         <hr class="my-4">
                         <p class="mb-0">Dont have an account?<a href="register">Register Now!</a></p>
                         <p class="mb-0">Seller? <a href="admin/login">Login as Seller</a></p>
