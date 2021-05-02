@@ -15,7 +15,8 @@
 <body>
     <div class="container">
         <main class="form-signin">
-            <form>
+            <form action="/admins/admin_login" method="POST">
+                <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?=$this->security->get_csrf_hash();?>" />
                 <div class="d-flex justify-content-center">
                     <img class="mb-4 mx-auto" src="<?php base_url() ?>/assets/images/cover.png" alt="" width="300" >
                 </div>
@@ -23,15 +24,18 @@
                 <div class="mb-3">
                     <label for="email" class="form-label">Email:</label>
                     <input type="email" class="form-control" id="email" name="email" placeholder="example@email.com">
+                    <?php echo form_error('email'); ?>
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
                     <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                    <?php echo form_error('password'); ?>
                 </div>
                 <div class="d-flex justify-content-center">
+                    <?=$this->session->flashdata('input_errors');?>
                     <input type="submit" class="btn btn-primary w-50" value="Log In">
                 </div>
-                <p class="mt-3">Dont have a seller account? <a href="/admin/register">Click here</a></p>
+                <!-- <p class="mt-3">Dont have a seller account? <a href="/admin/register">Click here</a></p> -->
                
                 <p class="mt-3 mb-3 text-muted text-center">&copy; 2021</p>
             </form>

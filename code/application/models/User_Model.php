@@ -90,6 +90,16 @@ class User_Model extends CI_Model {
         }
     }
 
+    function admin_validate_signin_match($user, $password) {
+        $encrypted_password = md5($password . '' . $user['user_salt']);
+        if($user['user_password'] == $encrypted_password && $user['user_user_level']==1) {
+            return "success";
+        }
+        else {
+            return "<small class='text-danger'>Please check your email/password.</small>";
+        }
+    }
+
     function create_admin_user($data) {
         // Password encryption
         $salt = bin2hex(openssl_random_pseudo_bytes(22));
