@@ -6,10 +6,10 @@ $route['default_controller'] = 'main';
 $route['login'] = 'users/login_page';
 $route['register'] = 'users/registration_page';
 
-$route['admin/login'] = 'users/admin_login_page';
-$route['admin/register'] = 'users/admin_registration_page';
+$route['admin/login'] = 'admins/admin_login_page';
+$route['admin/register'] = 'admins/admin_registration_page';
 
-$route['logout'] = 'products/logout';
+$route['logout'] = 'users/logout';
 
 $route['products'] = 'products/products_page';
 
