@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+/* NAVBAR */
+h1{
+    font-family: 'Quicksand', sans-serif;
+}
+ul li{
+    list-style-type: none;
+}
+/* .banner-bgs{
+    background-image: url('https://static.nike.com/a/images/f_auto/dpr_1.0/w_1237,c_limit/ba66e1fe-02f6-4b7f-b45f-8458d1648d3f/nike-just-do-it.jpg');
+    background-position: right;
+    background-size: cover;
+} */
+.heads{
+
+    background: rgba( 255, 255, 255, 0.10 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 20.0px );
+    -webkit-backdrop-filter: blur( 20.0px );
+
+}
+select{
+    width: 50%;
+}
+.dashboard-table{
+    background: rgba( 255, 255, 255, 0.35 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 18.0px );
+    -webkit-backdrop-filter: blur( 18.0px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+footer{
+    width: 100%;
+    min-height: 5vh;
+}

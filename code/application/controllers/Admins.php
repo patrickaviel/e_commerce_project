@@ -80,4 +80,33 @@ class Admins extends CI_Controller {
         } 
     }
 
+    public function admin_products(){
+        $this->load->view('Admins/admin_products');
+    }
+
+    public function admin_brands(){
+        $this->load->view('Admins/admin_brands');
+    }
+
+    public function admin_users(){
+        $this->load->view('Admins/admin_users');
+    }
+
+    public function add_new_item(){
+        $this->form_validation
+            ->set_rules('name','Name','required|trim')
+            ->set_rules('description','Description','required|trim')
+            ->set_rules('category','Category','required|trim')
+            ->set_rules('quantity','Quantity','required|numeric')
+            ->set_rules('price','Price','required|trim|decimal');
+
+        if($this->form_validation->run()==FALSE){
+            var_dump(validation_errors());
+            echo "error";
+        }else{
+            var_dump($this->input->post());
+            echo "success";
+        } 
+    }
+
 }

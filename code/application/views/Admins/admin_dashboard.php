@@ -24,26 +24,26 @@
                   <img src="<?php base_url() ?>/assets/images/cover.png" class="" width="150px" >
                 </a>
           
-                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="#" class="nav-link px-2 text-white">Orders</a></li>
-                    <li><a href="#" class="nav-link px-2 text-white">Categories</a></li>
-                    <li><a href="#" class="nav-link px-2 text-white">Products</a></li>
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 px-2 justify-content-center mb-md-0">
+                <li><a href="/admin/dashboard" class="nav-link px-2 text-warning border rounded border-warning">Orders</a></li>
+                    <li><a href="/admin/brands" class="nav-link px-2 text-white">Brand & Categories</a></li>
+                    <li><a href="/admin/products" class="nav-link px-2 text-white">Products</a></li>
                     <li><a href="#" class="nav-link px-2 text-white">Users</a></li>
                 </ul>
           
                 <div class="text-end">
-                <div class="dropdown d-inline">
-                        <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        Hello, <?= $this->session->userdata('user_first_name')?>!
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li><a href="/logout" class="dropdown-item" type="button">Edit Profile</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a href="/logout" class="dropdown-item" type="button">Logout</a></li>
-                        </ul>
+                    <div class="dropdown d-inline">
+                            <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            Hello, <?= $this->session->userdata('user_first_name')?>!
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><a href="/logout" class="dropdown-item" type="button">Edit Profile</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a href="/logout" class="dropdown-item" type="button">Logout</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-              </div>
             </div>
         </header>
           <!-- Navbar End -->
