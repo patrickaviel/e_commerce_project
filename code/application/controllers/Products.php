@@ -22,6 +22,7 @@ class Products extends CI_Controller {
             $form_data = $this->input->post();
             $this->Product_Model->add_brand($form_data);
             $data['brands'] = $this->Product_Model->get_all_brands();
+            $data['categories'] = $this->Product_Model->get_all_categories();
             $this->load->view('Admins/admin_brands',$data);
         } 
     }
@@ -35,6 +36,7 @@ class Products extends CI_Controller {
         }else{
             $form_data = $this->input->post();
             $this->Product_Model->add_category($form_data);
+            $data['brands'] = $this->Product_Model->get_all_brands();
             $data['categories'] = $this->Product_Model->get_all_categories();
             $this->load->view('Admins/admin_brands',$data);
         }
