@@ -5,6 +5,7 @@ class Admins extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('User_Model');
+        $this->load->model('Product_Model');
     }
 
     public function admin_login() {
@@ -67,7 +68,6 @@ class Admins extends CI_Controller {
             ->set_rules('zip','Zip','required|trim|numeric|min_length[3]');
 
         if($this->form_validation->run()==FALSE){
-            // var_dump(validation_errors());
             $this->load->view('Admins/admin_registration');
            
         }else{
@@ -85,7 +85,9 @@ class Admins extends CI_Controller {
     }
 
     public function admin_brands(){
-        $this->load->view('Admins/admin_brands');
+        $data['brands'] = $this->Product_Model->get_all_brands();
+        $data['categories'] = $this->Product_Model->get_all_categories();
+        $this->load->view('Admins/admin_brands',$data);
     }
 
     public function admin_users(){

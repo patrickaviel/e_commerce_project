@@ -59,11 +59,11 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="/admins/add_new_item" method="POST">
+                        <form action="/products/add_brand" method="POST">
                             <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?=$this->security->get_csrf_hash();?>" />
                             <div class="mb-3">
-                                <label for="name" class="form-label">Brand Name: </label>
-                                <input type="text" class="form-control" id="formGroupExampleInput" name="name" placeholder="Brand Name">
+                                <label for="brand" class="form-label">Brand Name: </label>
+                                <input type="text" class="form-control" id="formGroupExampleInput" name="brand" placeholder="Brand Name">
                             </div>
                     </div>
                     <div class="modal-footer">
@@ -85,11 +85,11 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="/admins/add_new_item" method="POST">
+                        <form action="/products/" method="POST">
                             <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?=$this->security->get_csrf_hash();?>" />
                             <div class="mb-3">
-                                <label for="name" class="form-label">Category: </label>
-                                <input type="text" class="form-control" id="formGroupExampleInput" name="name" placeholder="Category">
+                                <label for="category" class="form-label">Category: </label>
+                                <input type="text" class="form-control" id="formGroupExampleInput" name="category" placeholder="Category">
                             </div>
                     </div>
                     <div class="modal-footer">
@@ -132,16 +132,13 @@
                         </tr>
                     </thead>
                     <tbody>
+<?php               foreach($brands as $brand):                 ?>
                         <tr>
-                            <th scope="row">1</th>
-                            <td>Nike</td>
+                            <th scope="row"><?= $brand['id'] ?></th>
+                            <td><?= $brand['brand'] ?></td>
                             <td class="text-center"><a href="">edit</a>|<a href="">delete</a></td>
                         </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Addidas</td>
-                            <td class="text-center"><a href="">edit</a>|<a href="">delete</a></td>
-                        </tr>
+<?php               endforeach;                                 ?>
                     </tbody>
                 </table>
                 
@@ -195,16 +192,13 @@
                         </tr>
                     </thead>
                     <tbody>
+<?php               foreach($categories as $category):                 ?>
                         <tr>
-                            <th scope="row">1</th>
-                            <td>Shoes</td>
+                            <th scope="row"><?= $category['id'] ?></th>
+                            <td><?= $category['category'] ?></td>
                             <td class="text-center"><a href="">edit</a>|<a href="">delete</a></td>
                         </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Shorts</td>
-                            <td class="text-center"><a href="">edit</a>|<a href="">delete</a></td>
-                        </tr>
+<?php               endforeach;                                 ?>
                     </tbody>
                 </table>
                 
