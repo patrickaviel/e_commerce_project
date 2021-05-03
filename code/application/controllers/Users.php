@@ -68,6 +68,37 @@ class Users extends CI_Controller {
         $this->load->view('Users/user_profile');
     }
 
+    public function save_profile(){
+        $this->form_validation
+            ->set_rules('email','Email','required|trim|min_length[11]')
+            ->set_rules('contact_no','contact_no','required|trim|min_length[11]')
+            ->set_rules('first_name','First Name','required|trim|min_length[2]')
+            ->set_rules('last_name','Last Name','required|trim|min_length[2]')
+            ->set_rules('password','Password','required|trim|min_length[8]')
+            ->set_rules('c_password','Password','required|trim|min_length[8]|matches[password]')
+            ->set_rules('house_no','House No','required|trim|numeric|min_length[1]')
+            ->set_rules('barangay','Barangay','required|trim|min_length[3]')
+            ->set_rules('municipality','Municipality','required|trim|min_length[3]')
+            ->set_rules('province','Province','required|trim|min_length[3]')
+            ->set_rules('zip','Zip','required|trim|numeric|min_length[3]');
+
+        if($this->form_validation->run()==FALSE){
+            $this->user_profile();
+        }else{
+            $form_data = $this->input->post();
+            $user_id = $this->input->post('user_id');
+            $this->User_Model->update_profile($form_data);
+            $user = $this->User_Model->get_user_by_id($user_id);
+            $this->session->set_userdata($user);
+            $result =   "<div class='alert alert-success' role='alert'>
+                            Success!
+                        </div>";
+            $this->session->set_flashdata('success', $result);
+            redirect("users/user_profile");
+        } 
+        
+    }
+
     public function logout() {
         $this->session->sess_destroy();
         redirect(base_url());   

@@ -55,12 +55,16 @@
         <!-- Form -->
         
         <div class="position-relative overflow-hidden bg-light banner-bgs">
-            <form action="users/register" method="POST" class="row g-3 hero-style w-50 mx-auto p-4 m-4">
+            <form action="/users/save_profile" method="POST" class="row g-3 hero-style w-50 mx-auto p-4 m-4">
                 <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?=$this->security->get_csrf_hash();?>" />
+                <input type="hidden" name="user_id" value="<?= $this->session->userdata('user_id')?>">
+                <input type="hidden" name="email" value="<?= $this->session->userdata('user_email')?>">
+                <input type="hidden" name="salt" value="<?= $this->session->userdata('user_salt')?>">
+                <?=$this->session->flashdata('success');?>
                 <h1 class="display-6"> <i class="fas fa-user-circle"></i> Edit Profile</h1>
                 <div class="col-md-8">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" value="<?= $this->session->userdata('user_email')?>" placeholder="xyz@example.com">
+                    <label for="e-mail" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="e-mail" name="e-mail" value="<?= $this->session->userdata('user_email')?>" placeholder="xyz@example.com" disabled>
                     <?php echo form_error('email'); ?>
                 </div>
                 <div class="col-md-4">
@@ -80,12 +84,12 @@
                 </div>
                 <div class="col-md-6">
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" value="<?= $this->session->userdata('user_password')?>">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password">
                     <?php echo form_error('password'); ?>
                 </div>
                 <div class="col-md-6">
                     <label for="c_password" class="form-label">Confirm Password</label>
-                    <input type="password" class="form-control" id="c_password" name="c_password" placeholder="Enter your password" value="<?= $this->session->userdata('user_password')?>">
+                    <input type="password" class="form-control" id="c_password" name="c_password" placeholder="Enter your password">
                     <?php echo form_error('c_password'); ?>
                 </div>
                 <div class="col-2">

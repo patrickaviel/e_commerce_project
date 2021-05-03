@@ -9,6 +9,8 @@ class User_Model extends CI_Model {
                             users.first_name as user_first_name,
                             users.last_name as user_last_name,
                             users.contact_no as user_contact_no,
+                            users.password as user_password,
+                            users.salt as user_salt,
                             users.user_level as user_user_level,
                             users.created_at as user_created_at,
                             users.updated_at as user_updated_at,
@@ -121,5 +123,50 @@ class User_Model extends CI_Model {
         return $this->db->insert_id();
     }
 
+    function update_profile($data){
+        $salt = $this->security->xss_clean($data['salt']);
+        $password = $this->security->xss_clean($data['password']);
+        $encrypted_password = md5($password . '' . $salt);
+
+        $query = "UPDATE users SET  email = ? ,
+                                    first_name = ? ,
+                                    last_name = ? ,
+                                    contact_no = ? ,
+                                    password = ? ,
+                                    salt = ?,
+                                    updated_at = ? 
+                                WHERE id = ?";
+                                    
+        $values = array(
+                    $this->security->xss_clean($data['email']),
+                    $this->security->xss_clean($data['first_name']),
+                    $this->security->xss_clean($data['last_name']),
+                    $this->security->xss_clean($data['contact_no']),
+                    $this->security->xss_clean($encrypted_password),
+                    $this->security->xss_clean($salt),
+                    date("Y-m-d h:i:s"),
+                    $this->security->xss_clean($data['user_id']),
+        );
+        $this->db->query($query,$values);
+
+        $query = "UPDATE addresses SET  house_no = ? ,
+                                        barangay = ? ,
+                                        municipality = ? ,
+                                        province = ? ,
+                                        zip_code = ? ,
+                                        updated_at = ? 
+                                WHERE user_id = ?";
+                                    
+        $values = array(
+                        $this->security->xss_clean($data['house_no']),
+                        $this->security->xss_clean($data['barangay']),
+                        $this->security->xss_clean($data['municipality']),
+                        $this->security->xss_clean($data['province']),
+                        $this->security->xss_clean($data['zip']),
+                        date("Y-m-d h:i:s"), 
+                        $this->security->xss_clean($data['user_id']),
+        );
+        return $this->db->query($query,$values);
+    }
 
 }
