@@ -50,7 +50,7 @@
         </header>
           <!-- Navbar End -->
 
-        <!-- Modal -->
+        <!-- Modal for adding Brand-->
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -76,7 +76,7 @@
         </div>
         <!-- End Modal -->
 
-        <!-- Modal 2 -->
+        <!-- Modal for adding Category -->
         <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -85,7 +85,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="/products/" method="POST">
+                        <form action="/products/add_category" method="POST">
                             <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?=$this->security->get_csrf_hash();?>" />
                             <div class="mb-3">
                                 <label for="category" class="form-label">Category: </label>
