@@ -81,7 +81,9 @@ class Admins extends CI_Controller {
     }
 
     public function admin_products(){
-        $this->load->view('Admins/admin_products');
+        $data['brands'] = $this->Product_Model->get_all_brands();
+        $data['categories'] = $this->Product_Model->get_all_categories();
+        $this->load->view('Admins/admin_products',$data);
     }
 
     public function admin_brands(){

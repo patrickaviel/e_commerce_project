@@ -64,9 +64,9 @@
                         <div class="mb-3">
                             <label for="brand" class="form-label">Brand</label>
                             <select class="form-select" aria-label="Default select example" name="brand">
-                                <option value="1">Nike</option>
-                                <option value="2">Addidas</option>
-                                <option value="3">Reebok</option>
+<?php                       foreach($brands as $brand):                 ?>
+                                <option value="<?= $brand['id'] ?>"><?= $brand['brand'] ?></option>
+<?php                       endforeach;                                 ?>
                             </select>
                         </div>
                         <div class="mb-3">
@@ -80,9 +80,9 @@
                         <div class="mb-3">
                             <label for="category" class="form-label">Category</label>
                             <select class="form-select" aria-label="Default select example" name="category">
-                                <option value="1">Shoes</option>
-                                <option value="2">T-Shirt</option>
-                                <option value="3">Pants</option>
+<?php                       foreach($categories as $category):                 ?>
+                                <option value="<?= $category['id'] ?>"><?= $category['category'] ?></option>
+<?php                       endforeach;                                 ?>
                             </select>
                         </div>
                         <div class="mb-3">
@@ -146,30 +146,16 @@
                         </tr>
                     </thead>
                     <tbody>
+<?php               foreach($items as $item):               ?>
                         <tr>
                             <td>Picture</td>
-                            <th scope="row">1</th>
-                            <td>KD</td>
-                            <td>5</td>
-                            <td>1</td>
+                            <th scope="row"><?= $item['id'] ?></th>
+                            <td><?= $item['name'] ?></td>
+                            <td><?= $item['quantity'] ?></td>
+                            <td>2</td>
                             <td><a href="">edit</a>|<a href="">delete</a></td>
                         </tr>
-                        <tr>
-                            <td>Picture</td>
-                            <th scope="row">2</th>
-                            <td>KD</td>
-                            <td>5</td>
-                            <td>1</td>
-                            <td><a href="">edit</a>|<a href="">delete</a></td>
-                        </tr>
-                        <tr>
-                            <td>Picture</td>
-                            <th scope="row">3</th>
-                            <td>KD</td>
-                            <td>5</td>
-                            <td>1</td>
-                            <td class="text-center"><a href="">edit</a>|<a href="">delete</a></td>
-                        </tr>
+<?php               endforeach;                               ?>
                     </tbody>
                 </table>
                 
