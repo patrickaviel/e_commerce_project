@@ -10,7 +10,7 @@ class Admins extends CI_Controller {
     public function admin_login() {
         $this->form_validation
             ->set_rules('email','Email','required|trim|valid_email')
-            ->set_rules('password','First Name','required|trim');
+            ->set_rules('password','Password','required|trim');
 
         if($this->form_validation->run()==FALSE){
             $this->admin_login_page();
@@ -18,20 +18,26 @@ class Admins extends CI_Controller {
             
             $email = $this->input->post('email');
             $user= $this->User_Model->get_user_by_email($email);
-
-            $result = $this->User_Model->admin_validate_signin_match($user, $this->input->post('password'));
-            if($result == "success") 
-            {
-                //$this->session->set_userdata($user);  
-                $this->session->set_userdata($user);           
-                redirect("admins/admin_dashboard");
-            }
-            else 
-            {
+            // var_dump($user);
+            if(is_null($user)){
+                $result =  "<div class='alert alert-danger' role='alert'>Please check your email/password.</div>";
                 $this->session->set_flashdata('input_errors', $result);
                 $this->admin_login_page();
+            }else{
+                $result = $this->User_Model->admin_validate_signin_match($user, $this->input->post('password'));
+                if($result == "success") 
+                {
+                    //$this->session->set_userdata($user);  
+                    $this->session->set_userdata($user);           
+                    redirect("admins/admin_dashboard");
+                }
+                else 
+                {
+                    $this->session->set_flashdata('input_errors', $result);
+                    $this->admin_login_page();
+                }
             }
-        } 
+         } 
     }
 
     public function admin_dashboard(){

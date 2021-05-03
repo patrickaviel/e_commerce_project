@@ -44,7 +44,7 @@ class User_Model extends CI_Model {
                         FROM addresses
                         LEFT JOIN users ON addresses.user_id = users.id
                         WHERE users.email = ?";
-        return $this->db->query($query, $this->security->xss_clean($email))->result_array()[0];
+        return $this->db->query($query, $this->security->xss_clean($email))->row_array();
     }
 
     function create_user($data) {
@@ -98,7 +98,7 @@ class User_Model extends CI_Model {
             return "success";
         }
         else {
-            return "<small class='text-danger'>Please check your email/password.</small>";
+            return "<div class='alert alert-danger' role='alert'>Please check your email/password.</div>";
         }
     }
 

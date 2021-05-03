@@ -31,8 +31,9 @@
                     <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                     <?php echo form_error('password'); ?>
                 </div>
+                <?=$this->session->flashdata('input_errors');?>
                 <div class="d-flex justify-content-center">
-                    <?=$this->session->flashdata('input_errors');?>
+                    
                     <input type="submit" class="btn btn-primary w-50" value="Log In">
                 </div>
                 <!-- <p class="mt-3">Dont have a seller account? <a href="/admin/register">Click here</a></p> -->
