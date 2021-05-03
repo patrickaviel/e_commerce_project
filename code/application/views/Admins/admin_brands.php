@@ -105,6 +105,7 @@
         <div class="position-relative overflow-hidden bg-light banner-bgs min-vh-100">
         <div class="container dashboard-table p-5 my-5">
                 <h1>Brands</h1>
+
                 <form action="">
                     <div class="row">
                         <div class="col input-group mb-3">
@@ -118,9 +119,7 @@
                                 Add New Brand
                             </button>
                         </div>
-                        
-                      </div>
-                      
+                    </div>
                 </form>
 
                 <table class="table table-bordered border-dark table-striped">
