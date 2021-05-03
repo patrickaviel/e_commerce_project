@@ -9,7 +9,11 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <!-- User defined CSS -->
     <link rel="stylesheet" href="<?php base_url() ?>/assets/stylesheets/index.css">
+    <!-- fontawesome cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+
 </head>
 <body>
     <!-- Main container -->
@@ -27,8 +31,25 @@
                     </ul>
             
                     <div class="text-end">
+<?php               if(is_null($this->session->userdata('user_id'))){                   ?>
                         <a href="login" type="button" class="btn btn-outline-light me-2">Login</a>
                         <a href="register" type="button" class="btn btn-warning">Sign-up</a>
+<?php               }else{                                                              ?>
+                        <!-- <p class="d-inline"></p> -->
+                        <a href="checkout_page.html" class="p-3 carts"><i class="fas fa-shopping-cart"></i> My Cart (0)</a>
+                        <!-- <a href="logout" type="button" class="btn btn-warning">Logout</a> -->
+                        <div class="dropdown d-inline">
+                            <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            Hello, <?= $this->session->userdata('user_first_name')?>!
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><a href="logout" class="dropdown-item" type="button"> <i class="fas fa-clipboard-list"></i> My Orders</a></li>
+                                <li><a href="/users/user_profile" class="dropdown-item" type="button"> <i class="fas fa-user-circle"></i> Edit Profile</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a href="logout" class="dropdown-item" type="button"> <i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                            </ul>
+                        </div>
+<?php               }                                                                   ?>
                     </div>
                 </div>
             </div>
@@ -40,7 +61,7 @@
                 <div>
                     <h1 class="display-4 fw-normal">Find New Great Deals!</h1>
                     <p class="lead fw-normal">up to 50% discount!</p>
-                    <a class="btn btn-outline-dark" href="products">Browse Products</a>
+                    <a class="btn btn-outline-dark" href="products">Shop Now! </a>
                 </div>
             </div>
             <div class="product-device shadow-sm d-none d-md-block"></div>
