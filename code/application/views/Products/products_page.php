@@ -93,30 +93,23 @@
 <?php                   foreach($items as $item):                   ?>        
                             <div class="col mb-3">
                                 <div class="card rounded-3 shadow-sm cardss h-100 py-2">
-                                <img src="<?=base_url('product_images/'.$item['image'])?>" class="rounded mx-auto d-block mt-5" alt="" width="130">
+                                <img src="<?=base_url('product_images/'.$item['image'])?>" class="rounded mx-auto d-block mt-5" alt="" height="130" >
                                 <div class="card-body ">
                                     <ul class="list-unstyled p-0">
                                         <small class="text-black-50">Nike</small>
                                         <li class="fw-light fw-normal"><?=$item['name']?></li>
                                     </ul>
                                 </div>
-                                <div class="card-footer bg-transparent border-secondary fw-bold">₱<?=$item['price']?></div>
+                                <div class="card-footer bg-transparent border-secondary lead">₱<?=number_format($item['price'],2)?></div>
                               </div>
                             </div>
 <?php                   endforeach;                                 ?>
                         </div>    
+                        <!-- PAGINATION LINKS -->
                         <div class="row d-inline">
                             <?=$pagination?>
                         </div>
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination justify-content-center">
-                                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                            </ul>
-                        </nav>
+                        <!-- PAGINATION END -->
                     </div>
                 </div>
             </main>
@@ -127,7 +120,7 @@
         <!-- FOOTER -->
         <footer class="container">
             <p class="float-end"><a href="#">Back to top</a></p>
-            <p>&copy; 2021 Shoepify, Inc. &middot;</p>
+            <p>&copy; 2021 E-Shoepify, Inc. &middot;</p>
         </footer>
     </div><!-- /.container -->
 
