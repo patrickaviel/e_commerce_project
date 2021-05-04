@@ -15,7 +15,7 @@ $route['admin/users']           = 'admins/admin_users';
 
 $route['logout']                = 'users/logout';
 
-$route['products']              = 'products/products_page';
+// $route['products']              = 'products/products_page';
 
 $route['404_override']          = '';
 $route['translate_uri_dashes']  = FALSE;

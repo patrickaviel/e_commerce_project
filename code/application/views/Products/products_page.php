@@ -72,8 +72,9 @@
             <main class="container-fluid py-3 p-0">
                 <div class="d-grid gap-3" style="grid-template-columns: 1fr 4fr;">
                     <div class="bg-light border rounded-3 p-2">
-                        <form >
-                            <input type="search" class="form-control" placeholder="Search...">
+                        <form action="" method="GET">
+                            <input type="search" class="form-control"  name="search" placeholder="Search...">
+                            <input type="submit" class="btn btn-outline-primary btn-sm w-100 mt-2" value="Search">
                         </form>
                         <p class="lead mb-0 mt-3">Categories</p>
                         <ul class="">
@@ -103,8 +104,10 @@
                               </div>
                             </div>
 <?php                   endforeach;                                 ?>
-                            
                         </div>    
+                        <div class="row d-inline">
+                            <?=$pagination?>
+                        </div>
                         <nav aria-label="Page navigation example">
                             <ul class="pagination justify-content-center">
                                 <li class="page-item"><a class="page-link" href="#">Previous</a></li>

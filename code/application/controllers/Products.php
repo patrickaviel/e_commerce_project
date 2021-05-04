@@ -5,11 +5,24 @@ class Products extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
+        $this->load->library("pagination");
         $this->load->model('Product_Model');
     }
 
     public function products_page() {
-        $data['items'] = $this->Product_Model->get_all_items();
+        $search = $this->input->get('search');
+        $start = (int)$this->input->get('per_page');
+        $limit = $this->config->item('per_page');
+        $where=[];
+        if($search){
+            $where['name LIKE'] = '%' .$search. '%';
+        }
+        $data['items'] = $this->Product_Model->get_items($limit,$start,$where);
+        $this->pagination->initialize([
+            'base_url'      => current_url() . ($search ? 'search='.$search : ''),
+            'total_rows'    => $this->Product_Model->count_items($where)
+        ]);
+        $data['pagination'] = $this->pagination->create_links();
         $this->load->view('Products/products_page',$data);
     }
     

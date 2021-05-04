@@ -101,4 +101,12 @@ class Product_Model extends CI_Model {
         return $this->db->query($query,$values);
     }
 
+    function get_items($limit,$start,$where){
+        return $this->db->where($where)->limit($limit,$start)->get('items')->result_array();
+    }
+
+    function count_items($where){
+        return $this->db->where($where)->count_all_results('items');
+    }
+
 }
