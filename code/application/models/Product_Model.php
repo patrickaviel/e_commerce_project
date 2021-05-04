@@ -15,6 +15,29 @@ class Product_Model extends CI_Model {
         return $this->db->query($query)->result_array();
     }
 
+    // load all items from the table items
+    function get_all_items() {
+        $query = "Select * from items";
+        return $this->db->query($query)->result_array();
+    }
+
+    // add new brand to the table brands
+    function add_item($data) {
+
+        $query = "INSERT INTO items (name,description,brand_id,category_id,price,qty,created_at) VALUES (?,?,?,?,?,?,?)";
+        $values = array(
+                    $this->security->xss_clean($data['name']), 
+                    $this->security->xss_clean($data['description']),
+                    $this->security->xss_clean($data['brand']), 
+                    $this->security->xss_clean($data['category']),
+                    $this->security->xss_clean($data['price']),
+                    $this->security->xss_clean($data['quantity']),    
+                    date("Y-m-d h:i:s")
+        ); 
+        $this->db->query($query,$values);
+        return $this->db->insert_id();
+    }
+
     // add new brand to the table brands
     function add_brand($data) {
 
