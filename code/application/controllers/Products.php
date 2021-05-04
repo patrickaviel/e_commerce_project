@@ -42,4 +42,32 @@ class Products extends CI_Controller {
         }
     }
 
+    public function add_new_item(){
+        $this->form_validation
+            ->set_rules('name','Name','required|trim')
+            ->set_rules('description','Description','required|trim')
+            ->set_rules('category','Category','required|trim')
+            ->set_rules('quantity','Quantity','required|numeric')
+            ->set_rules('price','Price','required|trim|greater_than[0]');
+
+        if($this->form_validation->run()==FALSE){
+            // var_dump(validation_errors());
+            // echo "error";
+            $data['brands'] = $this->Product_Model->get_all_brands();
+            $data['categories'] = $this->Product_Model->get_all_categories();
+            $data['items'] = $this->Product_Model->get_all_items();
+            $this->session->set_flashdata('error', "Error adding new item!");
+            $this->load->view('Admins/admin_products',$data);
+        }else{
+            $form_data = $this->input->post();
+            $this->Product_Model->add_item($form_data);
+
+            $data['brands'] = $this->Product_Model->get_all_brands();
+            $data['categories'] = $this->Product_Model->get_all_categories();
+            $data['items'] = $this->Product_Model->get_all_items();
+            $this->session->set_flashdata('success', "Successfully added new item!");
+            $this->load->view('Admins/admin_products',$data);
+        } 
+    }
+
 }
