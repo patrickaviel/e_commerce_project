@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.banner-bgs{
+    background: rgba( 255, 255, 255, 0.40 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 17.5px );
+    -webkit-backdrop-filter: blur( 17.5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+.price{
+    color: #ffc107;
+}
+.buy-now{
+    text-decoration: none;
+    color:white;
+    padding: 0;
+    width: 225px;
+    text-align: center;
+    margin-right: 10px;
+    border: 0;
+    background: #f57224;
+    height: 44px;
+    font-size: 16px;
+    border-radius: 2px;
+    transition: all .3s ease-out;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.add-to-cart{
+    text-decoration: none;
+    color:white;
+    padding: 0;
+    width: 225px;
+    text-align: center;
+    margin-right: 10px;
+    border: 0;
+    background: #ffb916;
+    height: 44px;
+    font-size: 16px;
+    border-radius: 2px;
+    transition: all .3s ease-out;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.cardss{
+    cursor: pointer;
+    transition: .3s;
+}
+.cardss:hover{
+    box-shadow: 0px 20px 40px rgba(0,0,0,0.4);
+    transform: scale(1.05,1.05);
+}
