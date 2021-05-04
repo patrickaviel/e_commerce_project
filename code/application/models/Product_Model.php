@@ -22,16 +22,17 @@ class Product_Model extends CI_Model {
     }
 
     // add new brand to the table brands
-    function add_item($data) {
+    function add_item($data,$file_name) {
 
-        $query = "INSERT INTO items (name,description,brand_id,category_id,price,qty,created_at) VALUES (?,?,?,?,?,?,?)";
+        $query = "INSERT INTO items (name,description,brand_id,category_id,price,qty,image,created_at) VALUES (?,?,?,?,?,?,?,?)";
         $values = array(
                     $this->security->xss_clean($data['name']), 
                     $this->security->xss_clean($data['description']),
                     $this->security->xss_clean($data['brand']), 
                     $this->security->xss_clean($data['category']),
                     $this->security->xss_clean($data['price']),
-                    $this->security->xss_clean($data['quantity']),    
+                    $this->security->xss_clean($data['quantity']),  
+                    $this->security->xss_clean($file_name),   
                     date("Y-m-d h:i:s")
         ); 
         $this->db->query($query,$values);

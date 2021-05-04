@@ -9,7 +9,8 @@ class Products extends CI_Controller {
     }
 
     public function products_page() {
-        $this->load->view('Products/products_page');
+        $data['items'] = $this->Product_Model->get_all_items();
+        $this->load->view('Products/products_page',$data);
     }
     
     public function add_brand(){
@@ -51,6 +52,7 @@ class Products extends CI_Controller {
             ->set_rules('price','Price','required|trim|greater_than[0]');
 
         if($this->form_validation->run()==FALSE){
+
             // var_dump(validation_errors());
             // echo "error";
             $data['brands'] = $this->Product_Model->get_all_brands();
@@ -59,14 +61,40 @@ class Products extends CI_Controller {
             $this->session->set_flashdata('error', "Error adding new item!");
             $this->load->view('Admins/admin_products',$data);
         }else{
-            $form_data = $this->input->post();
-            $this->Product_Model->add_item($form_data);
+            $ori_filename = $_FILES['image']['name'];
+            
+            $new_name = time()."".str_replace(' ', '-', $ori_filename);
+            $config = [
+                'upload_path'       =>      './product_images/',
+                'allowed_types'     =>      'gif|jpg|png',
+                'file_name'         =>      $new_name,
+            ];
 
-            $data['brands'] = $this->Product_Model->get_all_brands();
-            $data['categories'] = $this->Product_Model->get_all_categories();
-            $data['items'] = $this->Product_Model->get_all_items();
-            $this->session->set_flashdata('success', "Successfully added new item!");
-            $this->load->view('Admins/admin_products',$data);
+            $this->load->library('upload', $config);
+
+            if ( ! $this->upload->do_upload('image'))
+            {
+                    $image_error = $this->upload->display_errors();
+                    $data['brands'] = $this->Product_Model->get_all_brands();
+                    $data['categories'] = $this->Product_Model->get_all_categories();
+                    $data['items'] = $this->Product_Model->get_all_items();
+                    $this->session->set_flashdata('image_error', $image_error);
+                    $this->load->view('Admins/admin_products', $data);
+            }
+            else
+            {
+                    $image_filename = $this->upload->data('file_name');
+                    $form_data = $this->input->post();
+                    // var_dump($image_filename);
+                    // var_dump($form_data);
+                    $this->Product_Model->add_item($form_data,$image_filename);
+
+                    $data['brands'] = $this->Product_Model->get_all_brands();
+                    $data['categories'] = $this->Product_Model->get_all_categories();
+                    $data['items'] = $this->Product_Model->get_all_items();
+                    $this->session->set_flashdata('success', "Successfully added new item!");
+                    $this->load->view('Admins/admin_products',$data);
+            }
         } 
     }
 

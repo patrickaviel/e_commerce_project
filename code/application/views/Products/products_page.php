@@ -70,7 +70,7 @@
         
         <div class="container">
             <main class="container-fluid py-3 p-0">
-                <div class="d-grid gap-3" style="grid-template-columns: 1fr 2fr;">
+                <div class="d-grid gap-3" style="grid-template-columns: 1fr 4fr;">
                     <div class="bg-light border rounded-3 p-2">
                         <form >
                             <input type="search" class="form-control" placeholder="Search...">
@@ -87,94 +87,33 @@
                     </div>
                     <div class=" rounded-3 p-2">
                         <div class="row row-cols-1 row-cols-md-3 mb-3 text-left">
+
                             <!-- card -->
+<?php                   foreach($items as $item):                   ?>        
                             <div class="col mb-3">
-                              <div class="card rounded-3 shadow-sm cardss">
-                                <div class="card-body">
-                                    <img src="https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/9f5962a5-6eb6-46d4-b538-130e70618576/downshifter-10-running-shoe-CrpbbD.png" class="rounded mx-auto d-block" alt="" width="100">
-                                    <ul class="list-unstyled mt-3">
-                                        <li class="lead">Nike Support IV</li>
-                                        <li class="fw-bold">$19.00</li>
+                                <div class="card rounded-3 shadow-sm cardss h-100 py-2">
+                                <img src="<?=base_url('product_images/'.$item['image'])?>" class="rounded mx-auto d-block mt-5" alt="" width="130">
+                                <div class="card-body ">
+                                    <ul class="list-unstyled p-0">
+                                        <small class="text-black-50">Nike</small>
+                                        <li class="fw-light fw-normal"><?=$item['name']?></li>
                                     </ul>
                                 </div>
+                                <div class="card-footer bg-transparent border-secondary fw-bold">₱<?=$item['price']?></div>
                               </div>
                             </div>
-                            <div class="col mb-3">
-                                <div class="card rounded-3 shadow-sm cardss">
-                                  <div class="card-body">
-                                    <img src="https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/9f5962a5-6eb6-46d4-b538-130e70618576/downshifter-10-running-shoe-CrpbbD.png" class="rounded mx-auto d-block" alt="" width="100">
-                                    <ul class="list-unstyled mt-3">
-                                        <li class="lead">Nike Support IV</li>
-                                        <li class="fw-bold">$19.00</li>
-                                    </ul>
-                                  </div>
-                                </div>
-                            </div>
-                            <div class="col mb-3">
-                                <div class="card rounded-3 shadow-sm cardss">
-                                  <div class="card-body">
-                                    <img src="https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/9f5962a5-6eb6-46d4-b538-130e70618576/downshifter-10-running-shoe-CrpbbD.png" class="rounded mx-auto d-block" alt="" width="100">
-                                    <ul class="list-unstyled mt-3">
-                                        <li class="lead">Nike Support IV</li>
-                                        <li class="fw-bold">$19.00</li>
-                                    </ul>
-                                  </div>
-                                </div>
-                            </div>
-                            <div class="col mb-3">
-                                <div class="card rounded-3 shadow-sm cardss">
-                                  <div class="card-body">
-                                    <img src="https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/9f5962a5-6eb6-46d4-b538-130e70618576/downshifter-10-running-shoe-CrpbbD.png" class="rounded mx-auto d-block" alt="" width="100">
-                                    <ul class="list-unstyled mt-3">
-                                        <li class="lead">Nike Support IV</li>
-                                        <li class="fw-bold">$19.00</li>
-                                    </ul>
-                                  </div>
-                                </div>
-                            </div>
-                            <div class="col mb-3">
-                                <div class="card rounded-3 shadow-sm cardss">
-                                  <div class="card-body">
-                                    <img src="https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/9f5962a5-6eb6-46d4-b538-130e70618576/downshifter-10-running-shoe-CrpbbD.png" class="rounded mx-auto d-block" alt="" width="100">
-                                    <ul class="list-unstyled mt-3">
-                                        <li class="lead">Nike Support IV</li>
-                                        <li class="fw-bold">$19.00</li>
-                                    </ul>
-                                  </div>
-                                </div>
-                            </div>
-                            <div class="col mb-3">
-                                <div class="card rounded-3 shadow-sm cardss">
-                                  <div class="card-body">
-                                    <img src="https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/9f5962a5-6eb6-46d4-b538-130e70618576/downshifter-10-running-shoe-CrpbbD.png" class="rounded mx-auto d-block" alt="" width="100">
-                                    <ul class="list-unstyled mt-3">
-                                        <li class="lead">Nike Support IV</li>
-                                        <li class="fw-bold">$19.00</li>
-                                    </ul>
-                                  </div>
-                                </div>
-                            </div>
-                            <div class="col mb-3">
-                                <div class="card rounded-3 shadow-sm cardss">
-                                  <div class="card-body">
-                                    <img src="https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/9f5962a5-6eb6-46d4-b538-130e70618576/downshifter-10-running-shoe-CrpbbD.png" class="rounded mx-auto d-block" alt="" width="100">
-                                    <ul class="list-unstyled mt-3">
-                                        <li class="lead">Nike Support IV</li>
-                                        <li class="fw-bold">$19.00</li>
-                                    </ul>
-                                  </div>
-                                </div>
-                            </div>
+<?php                   endforeach;                                 ?>
+                            
                         </div>    
                         <nav aria-label="Page navigation example">
                             <ul class="pagination justify-content-center">
-                              <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                              <li class="page-item"><a class="page-link" href="#">1</a></li>
-                              <li class="page-item"><a class="page-link" href="#">2</a></li>
-                              <li class="page-item"><a class="page-link" href="#">3</a></li>
-                              <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
                             </ul>
-                          </nav>
+                        </nav>
                     </div>
                 </div>
             </main>

@@ -59,7 +59,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="/products/add_new_item" method="POST">
+                    <form action="/products/add_new_item" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?=$this->security->get_csrf_hash();?>" />
                         <div class="mb-3">
                             <label for="brand" class="form-label">Brand</label>
@@ -99,8 +99,11 @@
                             <?php echo form_error('price'); ?>
                         </div>
                         <div class="mb-3">
-                            <label for="formFile" class="form-label">Image</label>
-                            <input class="form-control" type="file" id="formFile">
+                            <label for="image" class="form-label">Image</label>
+                            <input class="form-control" type="file" name="image" id="image">
+<?php                   if ($this->session->flashdata('image_error')) { ?>
+                            <div class="alert alert-danger"> <?= $this->session->flashdata('image_error') ?> </div>
+<?php                   } ?>
                         </div>
                         
 
@@ -157,12 +160,12 @@
                     <tbody>
 <?php               foreach($items as $item):               ?>
                         <tr>
-                            <td>Picture</td>
-                            <th scope="row"><?= $item['id'] ?></th>
-                            <td><?= $item['name'] ?></td>
-                            <td><?= $item['qty'] ?></td>
-                            <td>0</td>
-                            <td class="text-center"><a href="">edit</a>|<a href="">delete</a></td>
+                            <td><img src="<?=base_url('product_images/'.$item['image'])?>" class="rounded mx-auto d-block" alt="" height="55"></td>
+                            <th class="align-middle" scope="row"><?= $item['id'] ?></th>
+                            <td class="align-middle"><?= $item['name'] ?></td>
+                            <td class="align-middle"><?= $item['qty'] ?></td>
+                            <td class="align-middle">0</td>
+                            <td class="text-center align-middle"><a href="">edit</a>|<a href="">delete</a></td>
                         </tr>
 <?php               endforeach;                               ?>
                     </tbody>
