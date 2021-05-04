@@ -38,7 +38,7 @@ class Admins extends CI_Controller {
                     $this->admin_login_page();
                 }
             }
-         } 
+        } 
     }
 
     public function admin_dashboard(){
@@ -81,6 +81,7 @@ class Admins extends CI_Controller {
     }
 
     public function admin_products(){
+        $data['items'] = $this->Product_Model->get_all_items();
         $data['brands'] = $this->Product_Model->get_all_brands();
         $data['categories'] = $this->Product_Model->get_all_categories();
         $this->load->view('Admins/admin_products',$data);
@@ -94,23 +95,6 @@ class Admins extends CI_Controller {
 
     public function admin_users(){
         $this->load->view('Admins/admin_users');
-    }
-
-    public function add_new_item(){
-        $this->form_validation
-            ->set_rules('name','Name','required|trim')
-            ->set_rules('description','Description','required|trim')
-            ->set_rules('category','Category','required|trim')
-            ->set_rules('quantity','Quantity','required|numeric')
-            ->set_rules('price','Price','required|trim|decimal');
-
-        if($this->form_validation->run()==FALSE){
-            var_dump(validation_errors());
-            echo "error";
-        }else{
-            var_dump($this->input->post());
-            echo "success";
-        } 
     }
 
 }
