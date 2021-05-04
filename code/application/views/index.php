@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shoepify</title>
+    <title>E-Shoepify</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
@@ -61,14 +61,14 @@
                 <div>
                     <h1 class="display-4 fw-normal">Find New Great Deals!</h1>
                     <p class="lead fw-normal">up to 50% discount!</p>
-                    <a class="btn btn-outline-dark" href="products">Shop Now! </a>
+                    <a class="btn btn-outline-dark" href="products/products_page">Shop Now! </a>
                 </div>
             </div>
             <div class="product-device shadow-sm d-none d-md-block"></div>
             <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
         </div>
         <footer class="container-fluid mt-2">
-            <p class="text-center mb-0">&copy; 2021 Shoepify, Inc. &middot;</p>
+            <p class="text-center mb-0">&copy; 2021 E-Shoepify, Inc. &middot;</p>
         </footer>
     </div>
     <!-- main container end -->
