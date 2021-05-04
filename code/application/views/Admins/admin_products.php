@@ -59,7 +59,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="/admins/add_new_item" method="POST">
+                    <form action="/products/add_new_item" method="POST">
                         <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?=$this->security->get_csrf_hash();?>" />
                         <div class="mb-3">
                             <label for="brand" class="form-label">Brand</label>
@@ -72,10 +72,12 @@
                         <div class="mb-3">
                             <label for="name" class="form-label">Name</label>
                             <input type="text" class="form-control" id="formGroupExampleInput" name="name" placeholder="Product Name">
+                            <?php echo form_error('name'); ?>
                         </div>
                         <div class="mb-3">
-                            <label for="formGroupExampleInput2" class="form-label">Description</label>
+                            <label for="description" class="form-label">Description</label>
                             <input type="text" class="form-control" id="formGroupExampleInput2" name="description" placeholder="Enter Description">
+                            <?php echo form_error('description'); ?>
                         </div>
                         <div class="mb-3">
                             <label for="category" class="form-label">Category</label>
@@ -88,11 +90,13 @@
                         <div class="mb-3">
                             <label for="quantity" class="form-label">Quantity</label>
                             <input type="number" class="form-control" id="quantity" name="quantity" min="1">
+                            <?php echo form_error('quantity'); ?>
                         </div>
                         <label for="price" class="form-label">Price</label>
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="price">₱</span>
                             <input type="number" class="form-control" name="price" onchange="setTwoNumberDecimal" min="0" step="0.25" value="0.00" />
+                            <?php echo form_error('price'); ?>
                         </div>
                         <div class="mb-3">
                             <label for="formFile" class="form-label">Image</label>
@@ -115,7 +119,12 @@
         <div class="position-relative overflow-hidden bg-light banner-bgs min-vh-100">
             
             <div class="container dashboard-table p-5 my-5">
-
+<?php if ($this->session->flashdata('error')) { ?>
+             <div class="alert alert-danger"> <?= $this->session->flashdata('error') ?> </div>
+<?php } ?>
+<?php if ($this->session->flashdata('success')) { ?>
+             <div class="alert alert-success"> <?= $this->session->flashdata('success') ?> </div>
+<?php } ?>
                 <form action="">
                     <div class="row">
                         <div class="col input-group mb-3">
@@ -151,9 +160,9 @@
                             <td>Picture</td>
                             <th scope="row"><?= $item['id'] ?></th>
                             <td><?= $item['name'] ?></td>
-                            <td><?= $item['quantity'] ?></td>
-                            <td>2</td>
-                            <td><a href="">edit</a>|<a href="">delete</a></td>
+                            <td><?= $item['qty'] ?></td>
+                            <td>0</td>
+                            <td class="text-center"><a href="">edit</a>|<a href="">delete</a></td>
                         </tr>
 <?php               endforeach;                               ?>
                     </tbody>
