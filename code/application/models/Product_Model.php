@@ -102,7 +102,16 @@ class Product_Model extends CI_Model {
     }
 
     function get_items($limit,$start,$where){
-        return $this->db->where($where)->limit($limit,$start)->get('items')->result_array();
+        $this->db->select('items.id, name, description,price,qty,image,categories.category, brands.brand');
+        $this->db->from('items');
+        $this->db->join('categories', 'items.category_id = categories.id', 'left');
+        $this->db->join('brands', ' items.brand_id = brands.id', 'left');
+        $this->db->where($where);
+        $this->db->limit($limit,$start);
+        $query = $this->db->get_compiled_select();
+        
+        // return $this->db->where($where)->limit($limit,$start)->get('items')->result_array();
+        return $this->db->query($query)->result_array();
     }
 
     function count_items($where){
