@@ -111,4 +111,25 @@ class Products extends CI_Controller {
         } 
     }
 
+    public function add_to_cart() {
+		$product_id = $this->input->post('prod_id',TRUE);
+		// $product_name = "Hello";
+        $product_name = $this->input->post('name',TRUE);
+		$product_qty = $this->input->post('quantity',TRUE);
+		$product_price = $this->input->post('price',TRUE);
+		
+		$prod_list = array(
+			'id'    => $product_id,
+			'name'  => $product_name,
+			'price' => $product_price,
+			'qty'  	=> $product_qty
+		 );
+
+        // var_dump($prod_list);
+        
+		$this->cart->insert($prod_list);
+        var_dump($this->cart->contents());
+		// redirect('products/item_page/'.$product_id);
+	}
+
 }
