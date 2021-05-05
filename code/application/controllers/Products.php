@@ -25,6 +25,11 @@ class Products extends CI_Controller {
         $data['pagination'] = $this->pagination->create_links();
         $this->load->view('Products/products_page',$data);
     }
+
+    public function item_page($id) {
+        $data['item'] = $this->Product_Model->get_item_by_id($id);
+        $this->load->view('Products/item_page',$data);
+    }
     
     public function add_brand(){
         $this->form_validation

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products</title>
+    <title>E-Shoepify - Products</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
@@ -90,19 +90,22 @@
                         <div class="row row-cols-1 row-cols-md-3 mb-3 text-left">
 
                             <!-- card -->
-<?php                   foreach($items as $item):                   ?>        
-                            <div class="col mb-3">
-                                <div class="card rounded-3 shadow-sm cardss h-100 py-2">
-                                <img src="<?=base_url('product_images/'.$item['image'])?>" class="rounded mx-auto d-block mt-5" alt="" height="130" >
-                                <div class="card-body ">
-                                    <ul class="list-unstyled p-0">
-                                        <small class="text-black-50">Nike</small>
-                                        <li class="fw-light fw-normal"><?=$item['name']?></li>
-                                    </ul>
+<?php                   foreach($items as $item):                   ?>
+                                 
+                                <div class="col mb-3">
+                                    <div class="card rounded-3 shadow-sm cardss h-100 py-2">
+                                    <img src="<?=base_url('product_images/'.$item['image'])?>" class="rounded mx-auto d-block mt-5" alt="" height="130" >
+                                    <div class="card-body ">
+                                        <ul class="list-unstyled p-0">
+                                            <small class="text-black-50">Nike</small>
+                                            <a href="/products/item_page/<?=$item['id']?>" class="stretched-link"></a>
+                                            <li class="fw-light fw-normal"><?=$item['name']?></li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-footer bg-transparent border-secondary lead">₱<?=number_format($item['price'],2)?></div>
                                 </div>
-                                <div class="card-footer bg-transparent border-secondary lead">₱<?=number_format($item['price'],2)?></div>
-                              </div>
-                            </div>
+                                </div>
+                            
 <?php                   endforeach;                                 ?>
                         </div>    
                         <!-- PAGINATION LINKS -->

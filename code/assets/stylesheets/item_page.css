@@ -36,6 +36,12 @@
     align-items: center;
     flex-direction: column;
 }
+.buy-now:hover{
+    color: #ffb916;
+}
+.add-to-cart:hover{
+    color: #f57224;
+}
 .add-to-cart{
     text-decoration: none;
     color:white;
@@ -57,6 +63,17 @@
     flex-direction: column;
 }
 
+.carts{
+    text-decoration: none;
+    color: #ffc107;
+}
+
+.carts:hover{
+    border: 1px solid #ffc107;
+    border-radius: 5px;
+    color: #ffc107;
+}
+
 .cardss{
     cursor: pointer;
     transition: .3s;
@@ -64,4 +81,33 @@
 .cardss:hover{
     box-shadow: 0px 20px 40px rgba(0,0,0,0.4);
     transform: scale(1.05,1.05);
+}
+
+.gallery-wrap .img-big-wrap img {
+    height: auto;
+    width: 450px;
+    display: inline-block;
+    cursor: zoom-in;
+    margin: auto;
+}
+
+
+.gallery-wrap .img-small-wrap .item-gallery {
+    width: 60px;
+    height: 60px;
+    border: 1px solid #ddd;
+    margin: 7px 2px;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.gallery-wrap .img-small-wrap {
+    text-align: center;
+}
+.gallery-wrap .img-small-wrap img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+    cursor: zoom-in;
 }

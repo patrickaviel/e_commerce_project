@@ -109,4 +109,12 @@ class Product_Model extends CI_Model {
         return $this->db->where($where)->count_all_results('items');
     }
 
+    function get_item_by_id($id) {
+        $query = "SELECT items.id, name, description,price,qty,image,categories.category, brands.brand FROM `e-shoepify`.items 
+                        LEFT JOIN categories ON items.category_id = categories.id
+                        LEFT JOIN brands ON items.brand_id = brands.id
+                        WHERE items.id = ?";
+        $values = array($this->security->xss_clean($id));
+        return $this->db->query($query,$values)->row_array();
+    }
 }
