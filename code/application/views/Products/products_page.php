@@ -31,11 +31,11 @@
 
                 <div class="text-end">
 <?php           if(is_null($this->session->userdata('user_id'))){   ?>
-                    <a href="login" type="button" class="btn btn-outline-light me-2">Login</a>
-                    <a href="register" type="button" class="btn btn-warning">Sign-up</a>
+                    <a href="/login" type="button" class="btn btn-outline-light me-2">Login</a>
+                    <a href="/register" type="button" class="btn btn-warning">Sign-up</a>
 <?php           }else{                                              ?>
                     <!-- <p class="d-inline"></p> -->
-                    <a href="checkout_page.html" class="p-3 carts"><i class="fas fa-shopping-cart"></i> My Cart (0)</a>
+                    <a href="/products/checkout" class="p-3 carts"><i class="fas fa-shopping-cart"></i> My Cart (<?=count($this->cart->contents())?>)</a>
                     <!-- <a href="logout" type="button" class="btn btn-warning">Logout</a> -->
                     <div class="dropdown d-inline">
                         <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -97,7 +97,7 @@
                                     <img src="<?=base_url('product_images/'.$item['image'])?>" class="rounded mx-auto d-block mt-5" alt="" height="130" >
                                     <div class="card-body ">
                                         <ul class="list-unstyled p-0">
-                                            <small class="text-black-50">Nike</small>
+                                            <small class="text-black-50"><?=$item['brand']?></small>
                                             <a href="/products/item_page/<?=$item['id']?>" class="stretched-link"></a>
                                             <li class="fw-light fw-normal"><?=$item['name']?></li>
                                         </ul>

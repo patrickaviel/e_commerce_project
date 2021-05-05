@@ -41,7 +41,7 @@
                         <a href="/register" type="button" class="btn btn-warning">Sign-up</a>
                         <?php           }else{                                              ?>
                         <!-- <p class="d-inline"></p> -->
-                        <a href="checkout_page.html" class="p-3 carts"><i class="fas fa-shopping-cart"></i> My Cart
+                        <a href="/products/checkout" class="p-3 carts"><i class="fas fa-shopping-cart"></i> My Cart
                             (<?=count($this->cart->contents())?>)</a>
                         <!-- <a href="logout" type="button" class="btn btn-warning">Logout</a> -->
                         <div class="dropdown d-inline">
@@ -130,6 +130,9 @@
                                     <input type="submit" class="add-to-cart" value="Add To Cart">
 <?php               }                                                   ?>
                                 </div>
+<?php if ($this->session->flashdata('success')) { ?>
+             <div class="alert alert-success mt-3"> <?= $this->session->flashdata('success') ?> </div>
+<?php } ?>
                             </form>
                         </article> <!-- card-body.// -->
                     </aside> <!-- col.// -->
