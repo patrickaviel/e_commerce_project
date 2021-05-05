@@ -133,8 +133,21 @@ class Products extends CI_Controller {
         // var_dump($prod_list);
         
 		$this->cart->insert($prod_list);
-        var_dump($this->cart->contents());
-		// redirect('products/item_page/'.$product_id);
+        // var_dump($this->cart->contents());
+        $this->session->set_flashdata('success', "Added to cart!");
+		redirect('products/item_page/'.$product_id);
 	}
+
+    public function checkout(){
+        $data['mycart'] = $this->cart->contents();
+        $this->load->view('Products/checkout_page',$data);
+    }
+
+    public function remove_cart_item($id){
+        $data = $this->cart->contents();
+		$data[$id]['qty'] = 0;
+		$this->cart->update($data);
+		redirect('/products/checkout');
+    }
 
 }
