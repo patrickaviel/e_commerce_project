@@ -52,7 +52,6 @@
                     </div>
                     <div class="col-10 mx-auto col-lg-5">
                         <form action="/users/login" method="POST" class="p-5 border rounded-3 bg-light">
-                        
                             <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?=$this->security->get_csrf_hash();?>" />
                             <div class="form-floating mb-3">
                                 <input type="email" class="form-control" id="floatingInput" name="email" value="<?php echo set_value('email'); ?>" placeholder="name@example.com">
