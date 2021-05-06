@@ -25,8 +25,8 @@ class Checkouts extends CI_Controller {
         $status = 'Order in Process';
         // save and retreive order id
         $order_id = $this->Order_Model->save_order($user_id,$bill_id,$ship_id,$total,$status);
-        // save order details to database
-        $this->Order_Model->save_order_details($order_id,$item_id,$total,$qty);
+        // // save order details to database
+        // $this->Order_Model->save_order_details($order_id,$item_id,$total,$qty);
         // load items from cart
         $mycart = $this->cart->contents();
         // insert items from cart using loop
@@ -36,21 +36,19 @@ class Checkouts extends CI_Controller {
                 'product_id' => $item['id'],
                 'quantity' => $item['qty'],
                 'price' => $item['price'],
-                'total' => $this->security->xss_clean($this->input->post('total'))
+                'total' =>$item['price']*$item['qty']
                 );
             // insert item
             $this->Order_Model->update_item_inventory($item['id'],$item['qty']);
-            $order_detail_id = $this->product_model->order_detail($order_detail);
+            $order_detail_id = $this->Order_Model->save_order_details($order_detail);
         }
         // destroy cart after inserting items
         // $this->cart->destroy();
         // displaying message after succcessfully inserting items
         $this->session->set_flashdata('success_purchase', "<h3>Your order was placed successfully!</h3>");
 
-        $this->load->view();
-        echo '<pre>';
-        var_dump($form_data);
-        echo '<pre>';
+        $data['mycart'] = $this->cart->contents();
+        redirect('StripePaymentController',$data);
 	}
 
 }
