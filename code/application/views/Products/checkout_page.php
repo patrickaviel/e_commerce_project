@@ -213,6 +213,7 @@
                                         Zip code required.
                                     </div>
                                 </div>
+
                             </div>
 
                             <hr class="my-4">
@@ -220,6 +221,7 @@
                             <h4 class="mb-3">Billing address</h4>
 
                             <div class="row g-3">
+
                                 <div class="col-sm-6">
                                     <label for="firstName" class="form-label">First name</label>
                                     <input type="text" name="bill_fname" class="form-control" id="firstName" placeholder="" value=""
@@ -288,6 +290,7 @@
                                         Zip code required.
                                     </div>
                                 </div>
+                                
                             </div>
 
                             <hr class="my-4">
