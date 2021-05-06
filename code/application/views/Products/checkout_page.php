@@ -37,10 +37,10 @@
                     </ul>
 
                     <div class="text-end">
-                        <?php           if(is_null($this->session->userdata('user_id'))){   ?>
+<?php           if(is_null($this->session->userdata('user_id'))){   ?>
                         <a href="login" type="button" class="btn btn-outline-light me-2">Login</a>
                         <a href="register" type="button" class="btn btn-warning">Sign-up</a>
-                        <?php           }else{                                              ?>
+<?php           }else{                                              ?>
                         <!-- <p class="d-inline"></p> -->
                         <a href="/products/checkout" class="p-3 carts"><i class="fas fa-shopping-cart"></i> My Cart
                             (<?=count($this->cart->contents())?>)</a>
@@ -62,7 +62,7 @@
                                             class="fas fa-sign-out-alt"></i> Logout</a></li>
                             </ul>
                         </div>
-                        <?php           }                                                   ?>
+<?php           }                                                   ?>
                     </div>
                 </div>
             </div>
@@ -84,7 +84,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php                   $total = 0;
+<?php                   $total = 0;
                         foreach($mycart as $item):          
                             $total = $total + $item['qty'] * $item['price'];    ?>
                             <tr>
@@ -94,7 +94,7 @@
                                         class="del "><i class="fas fa-trash-alt"></i></td>
                                 <td>₱<?=number_format($item['qty'] * $item['price'],2)?></td>
                             </tr>
-                            <?php                   endforeach;          ?>
+<?php                   endforeach;          ?>
                         </tbody>
                     </table>
                     <div class="container d-flex justify-content-end">
