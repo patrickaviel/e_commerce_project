@@ -112,27 +112,15 @@
                             <span class="badge bg-primary rounded-pill"><?=count($mycart);?></span>
                         </h4>
                         <ul class="list-group mb-3">
+<?php                   foreach($mycart as $item):          ?>                        
                             <li class="list-group-item d-flex justify-content-between lh-sm">
                                 <div>
-                                    <h6 class="my-0">Product name</h6>
-                                    <small class="text-muted">Brief description</small>
+                                    <h6 class="my-0"><?=$item['name']?></h6>
+                                    <small class="text-muted">Qty: <?=$item['qty']?></small>
                                 </div>
-                                <span class="text-muted">$12</span>
+                                <span class="text-muted">₱<?=number_format($item['qty'] * $item['price'],2)?></span>
                             </li>
-                            <li class="list-group-item d-flex justify-content-between lh-sm">
-                                <div>
-                                    <h6 class="my-0">Second product</h6>
-                                    <small class="text-muted">Brief description</small>
-                                </div>
-                                <span class="text-muted">$8</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between lh-sm">
-                                <div>
-                                    <h6 class="my-0">Third item</h6>
-                                    <small class="text-muted">Brief description</small>
-                                </div>
-                                <span class="text-muted">$5</span>
-                            </li>
+<?php                   endforeach;                         ?>
                             <li class="list-group-item d-flex justify-content-between">
                                 <span>Total (PHP)</span>
                                 <strong>₱<?=number_format($total,2)?></strong>
@@ -164,8 +152,6 @@
                                         Valid last name is required.
                                     </div>
                                 </div>
-
-
 
                                 <div class="col-12">
                                     <label for="email" class="form-label">Email</label>
