@@ -121,12 +121,12 @@
                                         </dl> <!-- item-property .// -->
                                     </div> <!-- col.// -->
                                 </div> <!-- row.// -->
-                                <div class="container d-flex justify-content-end mt-3">
+                                <div class="container d-flex justify-content-center mt-3">
 <?php              if(is_null($this->session->userdata('user_id'))){   ?>
                                     <a class="buy-now" onclick=alertME()>Buy Now</a>
                                     <a class="add-to-cart" onclick=alertME()>Add To Cart</a>
 <?php               }else{                                              ?>
-                                    <a href="/products/add_to_cart" class="buy-now">Buy Now</a>
+                                    <!-- <a href="/products/add_to_cart" class="buy-now">Buy Now</a> -->
                                     <input type="submit" class="add-to-cart" value="Add To Cart">
 <?php               }                                                   ?>
                                 </div>
