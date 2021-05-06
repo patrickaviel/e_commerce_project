@@ -159,7 +159,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
 
                         <div class='form-row row'>
-                            <div class='col-md-12 error form-group d-none'>
+                            <div class='col-md-12 error form-group d-none mt-3'>
                                 <div class='alert-danger alert'>Error occured while making the payment.</div>
                             </div>
                         </div>
