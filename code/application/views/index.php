@@ -57,7 +57,7 @@
             <div class="col-md-5 p-lg-5 heads min-vh-100 d-flex align-items-center">
                 <div>
                     <h1 class="display-4 fw-normal">Find New Great Deals!</h1>
-                    <p class="lead fw-normal">up to 50% discount!</p>
+                    <p class="lead fw-normal">Free Shipping Nationwide!</p>
                     <a class="btn btn-outline-dark" href="products/products_page">Shop Now! </a>
                 </div>
             </div>
