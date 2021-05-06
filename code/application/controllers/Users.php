@@ -99,6 +99,10 @@ class Users extends CI_Controller {
         
     }
 
+    public function my_orders(){
+        $this->load->view('Users/user_orders');
+    }
+
     public function logout() {
         $this->session->sess_destroy();
         redirect(base_url());   
