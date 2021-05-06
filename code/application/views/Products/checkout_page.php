@@ -291,8 +291,11 @@
                             </div>
 
                             <hr class="my-4">
-
+<?php                   if(count($mycart)>0) {    ?>
                             <button class="w-100 btn btn-primary btn-lg" type="submit">Proceed to payment</button>
+<?php                   }else{    ?>
+                            <button class="w-100 btn btn-primary btn-lg" type="submit" disabled>Proceed to payment</button>
+<?php                   }   ?>
                         </form>
                     </div>
                 </div>
