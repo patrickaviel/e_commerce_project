@@ -7,22 +7,25 @@ class StripePaymentController extends CI_Controller {
        parent::__construct();
        $this->load->library("session");
        $this->load->helper('url');
+       $this->load->model('Order_Model');
     }
     
 
     public function index()
     {
-        $this->load->view('Products/checkout');
+        $data['mycart'] = $this->cart->contents();
+        $this->load->view('Products/checkout',$data);
     }
 
     public function handlePayment()
     {
+        $total = $this->input->post('total');
         require_once('application/libraries/stripe-php/init.php');
     
         \Stripe\Stripe::setApiKey($this->config->item('stripe_secret'));
      
         \Stripe\Charge::create ([
-                "amount" => 2000*50,
+                "amount" => str_replace(",","",$total)*100,
                 "currency" => "php",
                 "source" => $this->input->post('stripeToken'),
                 "description" => "Dummy stripe payment." 
