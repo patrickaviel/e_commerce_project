@@ -62,6 +62,7 @@
                     <h1 class="display-4 fw-normal">Find New Great Deals!</h1>
                     <p class="lead fw-normal">up to 50% discount!</p>
                     <a class="btn btn-outline-dark" href="products/products_page">Shop Now! </a>
+                    <a href="/StripePaymentController">Stripe Test</a>
                 </div>
             </div>
             <div class="product-device shadow-sm d-none d-md-block"></div>

@@ -17,5 +17,9 @@ $route['logout']                = 'users/logout';
 
 // $route['products']              = 'products/products_page';
 
+// STRIPE API
+$route['make-stripe-payment'] = "StripePaymentController";
+$route['handleStripePayment']['post'] = "StripePaymentController/handlePayment";
+
 $route['404_override']          = '';
 $route['translate_uri_dashes']  = FALSE;
