@@ -36,7 +36,7 @@
                         <a href="register" type="button" class="btn btn-warning">Sign-up</a>
 <?php               }else{                                                              ?>
                         <!-- <p class="d-inline"></p> -->
-                        <a href="checkout_page.html" class="p-3 carts"><i class="fas fa-shopping-cart"></i> My Cart (0)</a>
+                        <a href="/products/checkout" class="p-3 carts"><i class="fas fa-shopping-cart"></i> My Cart (<?=count($mycart);?>)</a>
                         <!-- <a href="logout" type="button" class="btn btn-warning">Logout</a> -->
                         <div class="dropdown d-inline">
                             <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -62,7 +62,6 @@
                     <h1 class="display-4 fw-normal">Find New Great Deals!</h1>
                     <p class="lead fw-normal">up to 50% discount!</p>
                     <a class="btn btn-outline-dark" href="products/products_page">Shop Now! </a>
-                    <a href="/StripePaymentController">Stripe Test</a>
                 </div>
             </div>
             <div class="product-device shadow-sm d-none d-md-block"></div>
