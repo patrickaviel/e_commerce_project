@@ -15,7 +15,6 @@ class StripePaymentController extends CI_Controller {
         $this->load->view('Products/checkout');
     }
 
-    
     public function handlePayment()
     {
         require_once('application/libraries/stripe-php/init.php');
