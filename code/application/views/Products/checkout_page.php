@@ -164,7 +164,7 @@
 
                                 <div class="col-12">
                                     <label for="address" class="form-label">Address</label>
-                                    <input type="text" name=shp_address" class="form-control" id="address" placeholder="1234 Main St"
+                                    <input type="text" name="shp_address" class="form-control" id="address" placeholder="1234 Main St"
                                         required>
                                     <div class="invalid-feedback">
                                         Please enter your shipping address.
