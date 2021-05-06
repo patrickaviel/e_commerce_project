@@ -26,7 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <header class="p-3 bg-dark text-white">
             <div class="container-fluid">
                 <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                    <a href="<?php base_url(); ?>" class="d-flex align-items-center mb-lg-0 text-white text-decoration-none">
+                    <a href="/products/products_page" class="d-flex align-items-center mb-lg-0 text-white text-decoration-none">
                         <img src="<?php base_url() ?>/assets/images/cover.png" class="" width="150px" >
                     </a>
             
