@@ -116,6 +116,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         data-stripe-publishable-key="<?php echo $this->config->item('stripe_key') ?>"
                         id="payment-form">
                         <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?=$this->security->get_csrf_hash();?>" />
+                        <input type="hidden" name="total" value="<?=$total?>">
                         <h4 class="mb-3">Payment</h4>
 
                         <div class="row gy-3">
