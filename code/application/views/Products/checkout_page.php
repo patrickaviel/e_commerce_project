@@ -141,8 +141,12 @@
                     </div>
                     <div class="col-md-7 col-lg-8">
                         <h4 class="mb-3">Shipping address</h4>
-                        <form class="needs-validation" novalidate>
-                        <div class="row g-3">
+                        <form action="/checkouts/create_order" method="POST" class="needs-validation" novalidate>
+                            <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?=$this->security->get_csrf_hash();?>" />
+                            <input type="hidden" name="user_id" value="<?=$this->session->userdata('user_id')?>">
+                            <input type="hidden" name="total" value="<?=$total?>">
+                            <div class="row g-3">
+
                                 <div class="col-sm-6">
                                     <label for="firstName" class="form-label">First name</label>
                                     <input type="text" name="shp_fname" class="form-control" id="firstName" placeholder="" value=""
