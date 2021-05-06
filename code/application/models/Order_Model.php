@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Order_Model extends CI_Model {
 
-    function save_ship_info($data,$user_id){
+    function save_ship_info($data){
         $query = "INSERT INTO shipping_informations 
                             (first_name,last_name,email,address,address_2,city,state,zipcode,created_at)
                     VALUES  (?,?,?,?,?,?,?,?,?)";
@@ -23,7 +23,7 @@ class Order_Model extends CI_Model {
         return $this->db->insert_id();
     }
 
-    function save_bill_info($data,$user_id){
+    function save_bill_info($data){
         $query = "INSERT INTO billing_informations 
                             (first_name,last_name,email,address,address_2,city,state,zipcode,created_at)
                     VALUES  (?,?,?,?,?,?,?,?,?)";
@@ -57,13 +57,13 @@ class Order_Model extends CI_Model {
         );
         $this->db->query($query,$values);
 
-        return $this->db->insert_id();            
+        return $this->db->insert_id();              
     }
 
     function save_order_details($order){
         $query = "INSERT INTO order_details 
                             (order_id,item_id,total,qty,created_at)
-                    VALUES  (?,?,?,?,?,?)";
+                    VALUES  (?,?,?,?,?)";
         $values = array(
             $this->security->xss_clean($order['order_id']),
             $this->security->xss_clean($order['product_id']),
