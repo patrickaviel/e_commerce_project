@@ -107,7 +107,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     
                     <div class="col-md-7 col-lg-8">
 <?php               if($this->session->flashdata('success')){           ?>
-                        <div class="alert alert-success text-center">
+                        <div class="alert alert-success text-center p-0">
                             <p><?php echo $this->session->flashdata('success'); ?></p>
                         </div>
  <?php              }                                                   ?>
