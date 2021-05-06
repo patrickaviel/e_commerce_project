@@ -40,7 +40,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <a href="register" type="button" class="btn btn-warning">Sign-up</a>
 <?php               }else{                                                              ?>
                         <!-- <p class="d-inline"></p> -->
-                        <a href="checkout_page.html" class="p-3 carts"><i class="fas fa-shopping-cart"></i> My Cart (0)</a>
+                        <a href="checkout_page.html" class="p-3 carts"><i class="fas fa-shopping-cart"></i> My Cart (<?=count($this->cart->contents())?>)</a>
                         <!-- <a href="logout" type="button" class="btn btn-warning">Logout</a> -->
                         <div class="dropdown d-inline">
                             <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
