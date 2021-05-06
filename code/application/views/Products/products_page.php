@@ -60,7 +60,7 @@
         <div class="container position-relative overflow-hidden bg-light banner-bgs p-0">
             <div class="col-md-5 p-lg-5 heads w-100">
                 <h1 class="display-4 fw-normal">Find New Great Deals!</h1>
-            <p class="lead fw-normal text-white">up to 50% discount!</p>
+            <p class="lead fw-normal text-white">Free Shipping Nationwide!</p>
             </div>
             <div class="product-device shadow-sm d-none d-md-block"></div>
             <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
