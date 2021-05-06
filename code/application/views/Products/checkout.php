@@ -150,8 +150,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                         <hr class="my-4">
 
+<?php               if(count($this->cart->contents())>0){?>
                         <button class="btn btn-primary btn-lg w-100 mx-auto" type="submit">Pay (₱<?=number_format($total,2)?>)</button>
-                        </form>
+<?php               }else{?>
+                        <button class="btn btn-primary btn-lg w-100 mx-auto" type="submit" disabled>Pay (₱<?=number_format($total,2)?>)</button>
+<?php               }   ?>
+                    </form>
                     </div>
                 </div>
             </main>
