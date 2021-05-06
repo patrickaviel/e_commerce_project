@@ -32,7 +32,7 @@ class StripePaymentController extends CI_Controller {
         ]);
             
         $this->session->set_flashdata('success', 'Payment has been successful.');
-             
+        $this->cart->destroy();
         redirect('/make-stripe-payment', 'refresh');
     }
 }   
