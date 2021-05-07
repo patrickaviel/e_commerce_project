@@ -150,4 +150,27 @@ class Products extends CI_Controller {
 		redirect('/products/checkout');
     }
 
+    public function delete_item($item_id) {
+        $this->Product_Model->delete_item($item_id);
+        $this->session->set_flashdata('success', "Item deleted!");
+        redirect('admin/products');
+    }
+
+    public function edit_item() {
+        $this->form_validation
+            ->set_rules('product_name','Name','required|trim')
+            ->set_rules('product_description','Description','required|trim')
+            ->set_rules('product_category','Category','required|trim')
+            ->set_rules('product_quantity','Quantity','required|numeric')
+            ->set_rules('product_price','Price','required|trim|greater_than[0]');
+        if($this->form_validation->run()==FALSE) {
+            $this->session->set_flashdata('error', "Error updating the item!");
+            redirect('admin/products');
+        } else {
+            $this->Product_Model->update_item();
+            $this->session->set_flashdata('success', "Item updated successfully!");
+            redirect('admin/products');
+        }
+    }
+
 }
