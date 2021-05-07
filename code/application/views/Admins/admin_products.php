@@ -13,6 +13,43 @@
     <link rel="stylesheet" href="<?php base_url() ?>/assets/stylesheets/admin_products.css">
     <!-- fontawesome cdn -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $( document ).ready(function() {
+            console.log( "ready!" );
+
+            $('.btn-edit').on('click',function(){
+                // get data from button edit
+                const id = $(this).data('id');
+                const name = $(this).data('name');
+                const price = $(this).data('price');
+                const category = $(this).data('category_id');
+                const description = $(this).data('desc');
+                const image = $(this).data('image');
+                const qty = $(this).data('qty');
+                // Set data to Form Edit
+                $('.product_id').val(id);
+                $('.product_name').val(name);
+                $('.product_price').val(price);
+                $('.product_category').val(category).trigger('change');
+                $('.product_description').val(description);
+                $('.product_image').attr("src",'<?=base_url()?>/product_images/'+image);
+                $('.product_quantity').val(qty);
+                
+                // Call Modal Edit
+                $('#editModal').modal('show');
+            });
+            
+
+            
+        });
+        $(document).on('click', 'a.delete', function(e){
+            e.preventDefault();
+                alert('Order updated!');
+            });
+
+        
+    </script>
 </head>
 <body>
     <!-- Main container -->
@@ -119,6 +156,71 @@
         </div>
         <!-- End Modal -->
 
+<!----------------------------------------------------------------------------------------------------------------------------- -->
+        <!-- Modal Edit Product-->
+        <form action="/products/edit_item" method="POST">
+                <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-edit"></i> Edit Product</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="form-group d-flex justify-content-center">
+                            <img src="" class="product_image" alt="" width="120">
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <label>Product Name</label>
+                            <input type="text" class="form-control product_name" name="product_name" placeholder="Product Name">
+                        </div>
+                        
+                        <div class="form-group mt-3">
+                            <div class="form-floating">
+                                <textarea class="form-control product_description" name="product_description" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                                <label for="floatingTextarea2">Description</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <label>Category</label>
+                            <select name="product_category" class="form-control product_category">
+                                <option value="">-Select-</option>
+                                <?php foreach($categories as $category):?>
+                                    <option value="<?= $category['id'] ?>"><?= $category['category'] ?></option>
+                                <?php endforeach;?>
+                            </select>
+                        </div>
+
+                        <label for="price" class="form-label mt-3">Price</label>
+                        <div class="input-group ">
+                            <span class="input-group-text" id="price">₱</span>
+                            <input type="number" class="form-control product_price" name="product_price" onchange="setTwoNumberDecimal" min="0" step="0.25" value="0.00" />
+                        </div>
+        
+                        <div class="form-group mt-3">
+                            <label>Quantity</label>
+                            <input type="number" class="form-control product_quantity" name="product_quantity" min="1">
+                        </div>
+                    
+                    </div>
+                    <div class="modal-footer">
+                        <input type="hidden" name="product_id" class="product_id">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </form>
+            <!-- End Modal Edit Product-->
+<!----------------------------------------------------------------------------------------------------------------------------- -->
+
+
         <div class="position-relative overflow-hidden bg-light banner-bgs min-vh-100">
             
             <div class="container dashboard-table p-5 my-5">
@@ -164,8 +266,16 @@
                             <th class="align-middle" scope="row"><?= $item['id'] ?></th>
                             <td class="align-middle"><?= $item['name'] ?></td>
                             <td class="align-middle"><?= $item['qty'] ?></td>
-                            <td class="align-middle">0</td>
-                            <td class="text-center align-middle"><a href="">edit</a>|<a href="">delete</a></td>
+                            <td class="align-middle"><?= $item['qty_sold'] ?></td>
+                            <td class="text-center align-middle">
+                                <a href="#" class="btn btn-success btn-sm btn-edit" data-id="<?= $item['id']?>" data-name="<?= $item['name'] ?>" data-desc="<?= $item['description'] ?>" data-qty="<?= $item['qty'] ?>" data-price="<?=$item['price']?>" data-image="<?=$item['image']?>">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                |
+                                <a href="/products/delete_item/<?= $item['id'] ?>" class="delete btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete?');">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </td>
                         </tr>
 <?php               endforeach;                               ?>
                     </tbody>
@@ -201,8 +311,8 @@
     </div>
     <!-- main container end -->
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js" integrity="sha384-lpyLfhYuitXl2zRZ5Bn2fqnhNAKOAaM/0Kr9laMspuaMiZfGmfwRNFh8HlMy49eQ" crossorigin="anonymous"></script>
     <script>
         function setTwoNumberDecimal(event) {
             this.value = parseFloat(this.value).toFixed(2);
