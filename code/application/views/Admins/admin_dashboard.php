@@ -7,7 +7,7 @@
     <title>Admin Dashboard</title>
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
     <!-- Personal CSS -->
     <link rel="stylesheet" href="<?php base_url() ?>/assets/stylesheets/admin_dashboard.css">
     <!-- fontawesome cdn -->
@@ -71,7 +71,7 @@
                             Hello, <?= $this->session->userdata('user_first_name')?>!
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a href="/logout" class="dropdown-item" type="button">Edit Profile</a></li>
+                                <li><a href="/users/user_profile" class="dropdown-item" type="button">Edit Profile</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a href="/logout" class="dropdown-item" type="button">Logout</a></li>
                             </ul>
@@ -83,17 +83,48 @@
           <!-- Navbar End -->
 
         <div class="position-relative overflow-hidden bg-light banner-bgs min-vh-100">
+        <!-- cards dashboard -->
+        <div class="container card-group d-flex justify-content-between p-3">
+            <div class="card rounded border border-dark mb-3" style="max-width: 18rem; min-height:11rem;">
+                <div class="card-body">
+                    <h1 class="display-5 card-title fw-bold"><?=$order_count['total_orders']?></h1>
+                    <p class="card-text lead">Total Orders</p>
+                </div>
+                <div class="card-footer d-flex justify-content-start align-items-center">
+                    <p class="m-0 p-0">More info <i class="fas fa-arrow-circle-right"></i></p>
+                </div>
+            </div>
+            <div class="card rounded border border-dark mb-3" style="max-width: 18rem; min-height:11rem;">
+                <div class="card-body">
+                    <h1 class="display-5 card-title fw-bold"><?=$item_count['total_items']?></h1>
+                    <p class="card-text lead">Items</p>
+                </div>
+                <div class="card-footer d-flex justify-content-center align-items-center">
+                    <p class="m-0 p-0">More info <i class="fas fa-arrow-circle-right"></i></p>
+                </div>
+            </div>
+            <div class="card rounded border border-dark mb-3" style="max-width: 18rem; min-height:11rem;">
+                <div class="card-body">
+                    <h1 class="display-5 card-title fw-bold"><?=$user_count['total_users']?></h1>
+                    <p class="card-text lead">User Registrations</p>
+                </div>
+                <div class="card-footer d-flex justify-content-center align-items-center">
+                    <p class="m-0 p-0">More info <i class="fas fa-arrow-circle-right"></i></p>
+                </div>
+            </div>
+        </div>
+        <!-- end cards dashboard -->
 
-            <div class="container dashboard-table py-3 px-5 my-5">
+            <div class="container dashboard-table p-5 mt-2 mb-5">
                 <h2>Orders</h2>
-                <form action="">
+                <form action="" method="POST">
                     <div class="row">
                         <div class="col input-group mb-3">
                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
                             <input type="text" class="form-control" placeholder="Search" aria-label="Username" aria-describedby="basic-addon1">
                         </div>
                         <div class="col">
-                            <select class="form-select w-25" aria-label="Default select example">
+                            <select class="form-select w-25 select" aria-label="Default select example" >
                                 <option selected>Show All</option>
                                 <option value="1">Order In Process</option>
                                 <option value="2">Shipped</option>
@@ -115,53 +146,12 @@
                                 <th scope="col">Status</th>
                             </tr>
                         </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">4</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                    </tbody>
-                </table>
-                
-                <div class="d-flex justify-content-center">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                        </ul>
-                    </nav>
+                        <tbody  id="orders">
+
+                        </tbody>
+                    </table>
                 </div>
+                <!-- END TABLE -->
             </div>
             <footer class="container-fluid mt-2 d-flex justify-content-center align-items-center">
                 <p class="text-center">&copy; 2021 E-Shoepify, Inc. &middot;</p>
