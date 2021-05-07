@@ -20,7 +20,7 @@
     <div class="container-fluid mx-auto p-0 main-c">
         <!-- Navbar -->
         <header class="p-3 bg-dark text-white">
-            <div class="container-fluid">
+            <div class="container">
                 <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                     <a href="/" class="d-flex align-items-center mb-lg-0 text-white text-decoration-none">
                         <img src="<?php base_url() ?>/assets/images/cover.png" class="" width="150px" >
@@ -36,14 +36,15 @@
                         <a href="register" type="button" class="btn btn-warning">Sign-up</a>
 <?php               }else{                                                              ?>
                         <div class="dropdown d-inline">
+                        <a href="/products/checkout" class="p-3 carts"><i class="fas fa-shopping-cart"></i> My Cart (<?=count($this->cart->contents())?>)</a>
                             <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                             Hello, <?= $this->session->userdata('user_first_name')?>!
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a href="logout" class="dropdown-item" type="button"> <i class="fas fa-clipboard-list"></i> My Orders</a></li>
+                                <li><a href="<?php base_url() ?>" class="dropdown-item" type="button"> <i class="fas fa-clipboard-list"></i> My Orders</a></li>
                                 <li><a href="/users/user_profile" class="dropdown-item" type="button"> <i class="fas fa-user-circle"></i> Edit Profile</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a href="logout" class="dropdown-item" type="button"> <i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                                <li><a href="/logout" class="dropdown-item" type="button"> <i class="fas fa-sign-out-alt"></i> Logout</a></li>
                             </ul>
                         </div>
 <?php               }                                                                   ?>
@@ -52,67 +53,33 @@
             </div>
         </header>
           <!-- Navbar End -->
-
         <div class="container p-5 heads mx-auto mt-3">
             
             <h1 class="display-6">My Orders</h1>
             <!-- order box -->
-            <div class="container px-2 pt-2 pb-4 border">
+<?php      if(count($orders)!=0){                  ?>
+<?php   foreach($orders as $order){             ?>
+            <div class="container px-2 pt-2 pb-4 border mt-3">
                 <div class="container d-flex justify-content-between p-0">
-                    <p class="lead m-0 fs-4">Order #12133 </p>
-                    <small class="fw-light rounded-pill text-secondary px-2 text-center d-flex justify-content-center align-items-center fst-italic">Order on Process</small>
+                    <p class="lead m-0 fs-4">Order #<?=$order['id']?> </p>
+                    <small class="fw-light rounded-pill text-secondary px-2 text-center d-flex justify-content-center align-items-center fst-italic"><?=$order['status']?></small>
                 </div>
                 <div class="container d-flex justify-content-between p-0">
-                    <small class="text-muted d-block">Placed on Oct 12 2020</small>
-                    <a href="">VIEW DETAILS</a>
+                    <small class="text-muted d-block">Placed on <?= $order['created_at']?></small>
+                    <a href="/Checkouts/view_order/<?=$order['id']?>">VIEW DETAILS</a>
                 </div>
-                
-                <hr>
-                <div class="row p-1 mt-1">
-                    <div class="col-1 text-center">
-                        1
-                    </div>
-                    <div class="col-2">
-                        <img src="https://static.nike.com/a/images/q_auto:eco/t_product_v1/f_auto/dpr_1.0/w_402,c_limit/763ffe26-0bd9-44e4-9278-f2953e53804b/flex-stride-wild-run-unlined-running-shorts-PGr6Kw.png" alt="" height="50">
-                    </div>
-                    <div class="col-4">
-                        Nike Shorts
-                    </div>
-                    <div class="col-2">
-                        <span class="text-muted">Qty</span>: 3
-                    </div>
-                    <div class="col-3">
-                        Total Price: 1200
-                    </div>
-                </div>
-                <hr class="w-75 mx-auto">
-                <div class="row p-1 mt-1">
-                    <div class="col-1 text-center">
-                        1
-                    </div>
-                    <div class="col-2">
-                        <img src="https://static.nike.com/a/images/q_auto:eco/t_product_v1/f_auto/dpr_1.0/w_402,c_limit/763ffe26-0bd9-44e4-9278-f2953e53804b/flex-stride-wild-run-unlined-running-shorts-PGr6Kw.png" alt="" height="50">
-                    </div>
-                    <div class="col-4">
-                        Nike Shorts
-                    </div>
-                    <div class="col-2">
-                        <span class="text-muted">Qty</span>: 3
-                    </div>
-                    <div class="col-3">
-                        Total Price: 1200
-                    </div>
-                </div>
+               
             </div>
+<?php   }                             ?>
+<?php   }else{ ?>
+            <div class="alert alert-secondary mt-" role="alert">
+                You have no existing orders!
+            </div>
+<?php   }                                       ?>
             <!-- order box end-->
         </div>
-        
-        
     </div>
-    <!-- main container end -->
-    <!-- <footer class="container-fluid mt-2">
-            <p class="text-center mb-0">&copy; 2021 E-Shoepify, Inc. &middot;</p>
-    </footer> -->
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
 </body>
