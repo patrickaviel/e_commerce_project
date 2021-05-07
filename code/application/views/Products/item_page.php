@@ -50,7 +50,7 @@
                                 Hello, <?= $this->session->userdata('user_first_name')?>!
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a href="logout" class="dropdown-item" type="button"> <i
+                                <li><a href="/users/my_orders" class="dropdown-item" type="button"> <i
                                             class="fas fa-clipboard-list"></i> My Orders</a></li>
                                 <li><a href="/users/user_profile" class="dropdown-item" type="button"> <i
                                             class="fas fa-user-circle"></i> Edit Profile</a></li>
@@ -106,6 +106,10 @@
                                 <dl class="param param-feature">
                                     <dt>Delivery</dt>
                                     <dd>Philippines</dd>
+                                </dl> <!-- item-property-hor .// -->
+                                <dl class="param param-feature">
+                                    <dt>Stocks Left</dt>
+                                    <dd><?=$item['qty']?></dd>
                                 </dl> <!-- item-property-hor .// -->
 
                                 <hr>
