@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <title>E-Shoepify - Payment</title>
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
     <!-- User defined CSS -->
     <link rel="stylesheet" href="<?php base_url() ?>/assets/stylesheets/checkout.css">
     <!-- fontawesome cdn -->
@@ -40,14 +40,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <a href="register" type="button" class="btn btn-warning">Sign-up</a>
 <?php               }else{                                                              ?>
                         <!-- <p class="d-inline"></p> -->
-                        <a href="checkout_page.html" class="p-3 carts"><i class="fas fa-shopping-cart"></i> My Cart (<?=count($this->cart->contents())?>)</a>
+                        <a href="/products/checkout" class="p-3 carts"><i class="fas fa-shopping-cart"></i> My Cart (<?=count($this->cart->contents())?>)</a>
                         <!-- <a href="logout" type="button" class="btn btn-warning">Logout</a> -->
                         <div class="dropdown d-inline">
                             <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                             Hello, <?= $this->session->userdata('user_first_name')?>!
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a href="logout" class="dropdown-item" type="button"> <i class="fas fa-clipboard-list"></i> My Orders</a></li>
+                                <li><a href="/users/my_orders" class="dropdown-item" type="button"> <i class="fas fa-clipboard-list"></i> My Orders</a></li>
                                 <li><a href="/users/user_profile" class="dropdown-item" type="button"> <i class="fas fa-user-circle"></i> Edit Profile</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a href="logout" class="dropdown-item" type="button"> <i class="fas fa-sign-out-alt"></i> Logout</a></li>
@@ -162,64 +162,65 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div> 
         <!-- PAYMENT END -->  
 	</div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js" integrity="sha384-lpyLfhYuitXl2zRZ5Bn2fqnhNAKOAaM/0Kr9laMspuaMiZfGmfwRNFh8HlMy49eQ" crossorigin="anonymous"></script>
 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            var $stripeForm = $(".form-validation");
+            $('form.form-validation').bind('submit', function (e) {
+                var $stripeForm = $(".form-validation"),
+                    inputSelector = ['input[type=email]', 'input[type=password]',
+                        'input[type=text]', 'input[type=file]',
+                        'textarea'
+                    ].join(', '),
+                    $inputs = $stripeForm.find('.required').find(inputSelector),
+                    $errorMessage = $stripeForm.find('div.error'),
+                    valid = true;
+                $errorMessage.addClass('d-none');
+
+                $('.has-error').removeClass('has-error');
+                $inputs.each(function (i, el) {
+                    var $input = $(el);
+                    if ($input.val() === '') {
+                        $input.parent().addClass('has-error');
+                        $errorMessage.removeClass('d-none');
+                        e.preventDefault();
+                    }
+                });
+
+                if (!$stripeForm.data('cc-on-file')) {
+                    e.preventDefault();
+                    Stripe.setPublishableKey($stripeForm.data('stripe-publishable-key'));
+                    Stripe.createToken({
+                        number: $('.card-number').val(),
+                        cvc: $('.card-cvc').val(),
+                        exp_month: $('.card-expiry-month').val(),
+                        exp_year: $('.card-expiry-year').val()
+                    }, stripeResponseHandler);
+                }
+
+            });
+
+            function stripeResponseHandler(status, res) {
+                if (res.error) {
+                    $('.error')
+                        .removeClass('d-none')
+                        .find('.alert')
+                        .text(res.error.message);
+                } else {
+                    var token = res['id'];
+                    $stripeForm.find('input[type=text]').empty();
+                    $stripeForm.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
+                    $stripeForm.get(0).submit();
+                }
+            }
+
+        });
+    </script>
 </body>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-
-<script type="text/javascript">
-	$(function () {
-		var $stripeForm = $(".form-validation");
-		$('form.form-validation').bind('submit', function (e) {
-			var $stripeForm = $(".form-validation"),
-				inputSelector = ['input[type=email]', 'input[type=password]',
-					'input[type=text]', 'input[type=file]',
-					'textarea'
-				].join(', '),
-				$inputs = $stripeForm.find('.required').find(inputSelector),
-				$errorMessage = $stripeForm.find('div.error'),
-				valid = true;
-			$errorMessage.addClass('d-none');
-
-			$('.has-error').removeClass('has-error');
-			$inputs.each(function (i, el) {
-				var $input = $(el);
-				if ($input.val() === '') {
-					$input.parent().addClass('has-error');
-					$errorMessage.removeClass('d-none');
-					e.preventDefault();
-				}
-			});
-
-			if (!$stripeForm.data('cc-on-file')) {
-				e.preventDefault();
-				Stripe.setPublishableKey($stripeForm.data('stripe-publishable-key'));
-				Stripe.createToken({
-					number: $('.card-number').val(),
-					cvc: $('.card-cvc').val(),
-					exp_month: $('.card-expiry-month').val(),
-					exp_year: $('.card-expiry-year').val()
-				}, stripeResponseHandler);
-			}
-
-		});
-
-		function stripeResponseHandler(status, res) {
-			if (res.error) {
-				$('.error')
-					.removeClass('d-none')
-					.find('.alert')
-					.text(res.error.message);
-			} else {
-				var token = res['id'];
-				$stripeForm.find('input[type=text]').empty();
-				$stripeForm.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
-				$stripeForm.get(0).submit();
-			}
-		}
-
-	});
-</script>
-
 </html>
