@@ -12,6 +12,40 @@
     <link rel="stylesheet" href="<?php base_url() ?>/assets/stylesheets/admin_dashboard.css">
     <!-- fontawesome cdn -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+
+            $.get('/Admins/index_html', function(res) {
+                
+                $('#orders').html(res);
+            });
+            $(document).on('submit', 'form', function(){
+                // alert('here');
+                console.log($(this).val());
+                $.post($(this).attr('action'), $(this).serialize(), function(res) {
+                    $('#users').html(res);
+                });
+                return false;
+            });
+            $(document).on('change', 'select', function(){
+                // alert('here');
+                // console.log($(this).val());
+                // $.post($(this).attr('action'), $(this).serialize(), function(res) {
+                //     $('#users').html(res);
+                // });
+                // return false;
+                $(this).parent().submit();
+                alert('Order updated!');
+            });
+            // $('#my_form').change(function(){
+            //     $.post($(this).attr('action'), $(this).serialize(), function(res) {
+            //         $('#users').html(res);
+            //     });
+            //     return false;
+            // });
+        });
+    </script>
 </head>
 <body>
     <!-- Main container -->
@@ -68,16 +102,19 @@
                         </div>
                       </div>
                 </form>
-
-                <table class="table table-bordered border-dark table-striped">
-                    <thead class="table-dark">
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
-                      </tr>
-                    </thead>
+                <!-- START TABLE -->
+                <div class="container mt-2">
+                    <table class="table table-borderless main">
+                        <thead>
+                            <tr class="head">
+                                <th scope="col">Order ID</th>
+                                <th scope="col">Customer</th>
+                                <th scope="col">Created</th>
+                                <th scope="col">Billing Address</th>
+                                <th scope="col">Total</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
                     <tbody>
                         <tr>
                             <th scope="row">1</th>
