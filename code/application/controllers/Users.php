@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Users extends CI_Controller {
     public function __construct() {
         parent::__construct();
+        $this->load->model('Order_Model');
         $this->load->model('User_Model');
     }
 	public function login_page() {
@@ -27,7 +28,7 @@ class Users extends CI_Controller {
             ->set_rules('zip','Zip','required|trim|numeric|min_length[3]');
 
         if($this->form_validation->run()==FALSE){
-            $this->load->view('users/user_login');
+            $this->load->view('users/user_registration');
         }else{
             $form_data = $this->input->post();
             $user_id = $this->User_Model->create_user($form_data);
@@ -70,6 +71,7 @@ class Users extends CI_Controller {
         }else{
             $this->load->view('Users/user_profile');
         }
+    }
 
     public function save_profile(){
         $this->form_validation
@@ -103,7 +105,12 @@ class Users extends CI_Controller {
     }
 
     public function my_orders(){
-        $this->load->view('Users/user_orders');
+        if(is_null($this->session->userdata('user_id'))){
+            redirect('login');
+        }else{
+            $data['orders'] = $this->Order_Model->get_all_orders($this->session->userdata('user_id'));
+            $this->load->view('Users/user_orders',$data);
+        }
     }
 
     public function logout() {
