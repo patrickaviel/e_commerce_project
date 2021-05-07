@@ -41,8 +41,29 @@ class Admins extends CI_Controller {
         } 
     }
 
-    public function admin_dashboard(){
-        $this->load->view('admins/admin_dashboard');
+    public function index_html() {
+		$data['orders'] = $this->Admin_Model->get_all_orders();
+		$this->load->view("partials/order_list", $data);
+	}
+
+    public function admin_dashboard() {
+        if(is_null($this->session->userdata('user_id'))){
+            redirect('Admins/admin_login');
+        }else{
+            $data['user_count'] = $this->Admin_Model->count_user();
+            $data['order_count'] = $this->Admin_Model->count_order();
+            $data['item_count'] = $this->Admin_Model->count_item();
+            $data['orders'] = $this->Admin_Model->get_all_orders();
+            $this->load->view('admins/admin_dashboard',$data);
+        }
+    }
+
+    public function update_status() {
+        $form_data = $this->input->post();
+        $this->Order_Model->update_status($form_data);
+        $this->session->set_flashdata('success', 'Order updated!');
+        $data['orders'] = $this->Admin_Model->get_all_orders();
+        $this->load->view("partials/order_list", $data);
     }
 
     public function admin_login_page(){
@@ -80,18 +101,24 @@ class Admins extends CI_Controller {
         } 
     }
 
-    public function admin_products(){
-        $data['items'] = $this->Product_Model->get_all_items();
-        $data['brands'] = $this->Product_Model->get_all_brands();
-        $data['categories'] = $this->Product_Model->get_all_categories();
-        $this->load->view('Admins/admin_products',$data);
-    }
+    public function admin_products() {
+        if(is_null($this->session->userdata('user_id'))){
+            redirect('Admins/admin_login');
+        }else{
+            $data['items'] = $this->Product_Model->get_all_items();
+            $data['brands'] = $this->Product_Model->get_all_brands();
+            $data['categories'] = $this->Product_Model->get_all_categories();
+            $this->load->view('Admins/admin_products',$data);
+        }
 
-    public function admin_brands(){
-        $data['brands'] = $this->Product_Model->get_all_brands();
-        $data['categories'] = $this->Product_Model->get_all_categories();
-        $this->load->view('Admins/admin_brands',$data);
-    }
+    public function admin_brands() {
+        if(is_null($this->session->userdata('user_id'))){
+            redirect('Admins/admin_login');
+        }else{
+            $data['brands'] = $this->Product_Model->get_all_brands();
+            $data['categories'] = $this->Product_Model->get_all_categories();
+            $this->load->view('Admins/admin_brands',$data);
+        }
 
     public function admin_users(){
         $this->load->view('Admins/admin_users');
