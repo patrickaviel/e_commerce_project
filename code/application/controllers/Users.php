@@ -65,6 +65,9 @@ class Users extends CI_Controller {
     }
 
     public function user_profile(){
+        if(is_null($this->session->userdata('user_id'))){
+            redirect('login');
+        }else{
         $this->load->view('Users/user_profile');
     }
 
