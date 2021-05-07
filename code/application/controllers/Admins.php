@@ -121,6 +121,7 @@ class Admins extends CI_Controller {
             $data['categories'] = $this->Product_Model->get_all_categories();
             $this->load->view('Admins/admin_brands',$data);
         }
+    }
 
     public function admin_users(){
         $this->load->view('Admins/admin_users');
