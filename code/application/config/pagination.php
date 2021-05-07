@@ -1,5 +1,6 @@
 <?php
 // $config['enable_query_strings'] = TRUE;
+// $config['reuse_query_string'] = true;
 $config['page_query_string']    = TRUE;
 $config['per_page']             = 9;
 // $config['prefix']               = '';
