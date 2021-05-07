@@ -126,4 +126,32 @@ class Product_Model extends CI_Model {
         $values = array($this->security->xss_clean($id));
         return $this->db->query($query,$values)->row_array();
     }
+
+    function get_all_categories_count() {
+        $query = "SELECT count(categories.category) as cat_count,categories.category FROM items
+                    INNER JOIN categories ON items.category_id = categories.id 
+                    GROUP BY categories.category";
+        return $this->db->query($query)->result_array();
+    }
+
+    function delete_item($item_id) {
+        $query = "DELETE from items WHERE id = ?";
+        $values = array($this->security->xss_clean($item_id));
+        return $this->db->query($query,$values);
+    }
+
+    function update_item() {
+        $query = "UPDATE items SET name = ?, description = ?,category_id =?, price = ?, qty = ?, updated_at = NOW()
+                    WHERE id = ?";
+        $values = array(
+            $this->security->xss_clean($this->input->post('product_name')),
+            $this->security->xss_clean($this->input->post('product_description')),
+            $this->security->xss_clean($this->input->post('product_category')),
+            $this->security->xss_clean($this->input->post('product_price')),
+            $this->security->xss_clean($this->input->post('product_quantity')),
+            $this->security->xss_clean($this->input->post('product_id')),
+        );
+        return $this->db->query($query,$values);
+    }
+
 }
