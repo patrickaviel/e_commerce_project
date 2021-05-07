@@ -29,7 +29,7 @@
                     <li><a href="/admin/dashboard" class="nav-link px-2 text-white">Orders</a></li>
                     <li><a href="/admin/brands" class="nav-link px-2 text-warning border rounded border-warning">Brand & Categories</a></li>
                     <li><a href="/admin/products" class="nav-link px-2 text-white ">Products</a></li>
-                    <li><a href="/admin/users" class="nav-link px-2 text-white">Users</a></li>
+                    <!-- <li><a href="/admin/users" class="nav-link px-2 text-white">Users</a></li> -->
                 </ul>
           
                 <div class="text-end">
