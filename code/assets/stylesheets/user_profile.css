@@ -8,31 +8,38 @@
 h1 {
     font-family: 'Quicksand', sans-serif;
 }
+
 ul li {
     list-style-type: none;
 }
+
 .carts {
     text-decoration: none;
     color: #ffc107;
 }
+
 .carts:hover {
     color: white;
 }
+
 .banner-bgs {
     background-image: url('https://static.nike.com/a/images/f_auto/dpr_1.0/w_1237,c_limit/ba66e1fe-02f6-4b7f-b45f-8458d1648d3f/nike-just-do-it.jpg');
     background-position: right;
     background-size: cover;
     min-height: 90vh;
 }
+
 .heads {
     background: rgba( 255, 255, 255, 0.10 );
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
     backdrop-filter: blur( 20.0px );
     -webkit-backdrop-filter: blur( 20.0px );
 }
+
 select {
     width: 50%;
 }
+
 .hero-style {
     background: rgba( 255, 255, 255, 0.70 );
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );

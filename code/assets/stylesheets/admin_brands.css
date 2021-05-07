@@ -1,14 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
 
-*{
+* {
     margin: 0;
     padding: 0;
 }
 /* NAVBAR */
-h1{
+h1 {
     font-family: 'Quicksand', sans-serif;
 }
-ul li{
+
+ul li {
     list-style-type: none;
 }
 /* .banner-bgs{
@@ -16,18 +17,18 @@ ul li{
     background-position: right;
     background-size: cover;
 } */
-.heads{
-
+.heads {
     background: rgba( 255, 255, 255, 0.10 );
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
     backdrop-filter: blur( 20.0px );
     -webkit-backdrop-filter: blur( 20.0px );
-
 }
-select{
+
+select {
     width: 50%;
 }
-.dashboard-table{
+
+.dashboard-table {
     background: rgba( 255, 255, 255, 0.35 );
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
     backdrop-filter: blur( 18.0px );
@@ -35,7 +36,8 @@ select{
     border-radius: 10px;
     border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
-footer{
+
+footer {
     width: 100%;
     min-height: 5vh;
 }

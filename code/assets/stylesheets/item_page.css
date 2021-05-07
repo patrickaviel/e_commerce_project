@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
 
-*{
+* {
     margin: 0;
     padding: 0;
 }
 
-.banner-bgs{
+.banner-bgs {
     background: rgba( 255, 255, 255, 0.40 );
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
     backdrop-filter: blur( 17.5px );
@@ -13,10 +13,12 @@
     border-radius: 10px;
     border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
-.price{
+
+.price {
     color: #ffc107;
 }
-.buy-now{
+
+.buy-now {
     text-decoration: none;
     color:white;
     padding: 0;
@@ -36,13 +38,16 @@
     align-items: center;
     flex-direction: column;
 }
-.buy-now:hover{
+
+.buy-now:hover {
     color: #ffb916;
 }
-.add-to-cart:hover{
+
+.add-to-cart:hover {
     color: #f57224;
 }
-.add-to-cart{
+
+.add-to-cart {
     text-decoration: none;
     color:white;
     padding: 0;
@@ -63,22 +68,22 @@
     flex-direction: column;
 }
 
-.carts{
+.carts {
     text-decoration: none;
     color: #ffc107;
 }
 
-.carts:hover{
+.carts:hover {
     border: 1px solid #ffc107;
     border-radius: 5px;
     color: #ffc107;
 }
 
-.cardss{
+.cardss {
     cursor: pointer;
     transition: .3s;
 }
-.cardss:hover{
+.cardss:hover {
     box-shadow: 0px 20px 40px rgba(0,0,0,0.4);
     transform: scale(1.05,1.05);
 }
@@ -90,7 +95,6 @@
     cursor: zoom-in;
     margin: auto;
 }
-
 
 .gallery-wrap .img-small-wrap .item-gallery {
     width: 60px;
@@ -104,6 +108,7 @@
 .gallery-wrap .img-small-wrap {
     text-align: center;
 }
+
 .gallery-wrap .img-small-wrap img {
     max-width: 100%;
     max-height: 100%;
