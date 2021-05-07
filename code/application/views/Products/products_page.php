@@ -21,7 +21,7 @@
         <header class="p-3 bg-dark text-white">
             <div class="container">
               <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                <a href="<?php base_url(); ?>" class="d-flex align-items-center mb-lg-0 text-white text-decoration-none">
+                <a href="/products/products_page" class="d-flex align-items-center mb-lg-0 text-white text-decoration-none">
                     <img src="<?php base_url() ?>/assets/images/cover.png" class="" width="150px" >
                 </a>
           
@@ -42,7 +42,7 @@
                         Hello, <?= $this->session->userdata('user_first_name')?>!
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li><a href="logout" class="dropdown-item" type="button"> <i class="fas fa-clipboard-list"></i> My Orders</a></li>
+                            <li><a href="/users/my_orders" class="dropdown-item" type="button"> <i class="fas fa-clipboard-list"></i> My Orders</a></li>
                             <li><a href="/users/user_profile" class="dropdown-item" type="button"> <i class="fas fa-user-circle"></i> Edit Profile</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a href="/logout" class="dropdown-item" type="button"> <i class="fas fa-sign-out-alt"></i> Logout</a></li>
@@ -78,12 +78,16 @@
                         </form>
                         <p class="lead mb-0 mt-3">Categories</p>
                         <ul class="">
-                            <li class="mb-2">All</li>
-                            <li class="mb-2">T-Shirts</li>
-                            <li class="mb-2">Shoes</li>
-                            <li class="mb-2">Shorts</li>
-                            <li class="mb-2">Sandals</li>
-                            <li class="mb-2">Pants</li>
+                            <form action="" method="GET">
+                                <input type="hidden" class="form-control"  name="search" value="">
+                                <input type="submit" class="border-0 bg-transparent fw-light my-2" value="› All (<?=count($item_count)?>)">
+                            </form>
+<?php                   foreach($categories as $category):      ?>
+                            <form action="" method="GET">
+                                <input type="hidden" class="form-control"  name="search" value="<?=$category['category']?>">
+                                <input type="submit" class="border-0 bg-transparent fw-light my-2" value="› <?=$category['category']?> (<?=$category['cat_count']?>)">
+                            </form>
+<?php                   endforeach;                             ?>
                         </ul>
                     </div>
                     <div class=" rounded-3 p-2">
@@ -94,6 +98,7 @@
                                  
                                 <div class="col mb-3">
                                     <div class="card rounded-3 shadow-sm cardss h-100 py-2">
+                                    <small class="text-black-50 ps-2"><?=$item['category']?></small>
                                     <img src="<?=base_url('product_images/'.$item['image'])?>" class="rounded mx-auto d-block mt-5" alt="" height="130" >
                                     <div class="card-body ">
                                         <ul class="list-unstyled p-0">
