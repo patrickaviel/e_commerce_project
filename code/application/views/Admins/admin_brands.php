@@ -127,7 +127,7 @@
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">Brand Name</th>
-                            <th scope="col">Action</th>
+                            <th scope="col" class="text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -135,7 +135,15 @@
                         <tr>
                             <th scope="row"><?= $brand['id'] ?></th>
                             <td><?= $brand['brand'] ?></td>
-                            <td class="text-center"><a href="">edit</a>|<a href="">delete</a></td>
+                            <td class="text-center align-middle">
+                                <a href="#" class="btn btn-success btn-sm btn-edit" data-id="<?= $brand['id']?>" data-category="<?= $brand['brand'] ?>">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                |
+                                <a href="/products/delete_item/<?= $brand['id'] ?>" class="delete btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete?');">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </td>
                         </tr>
 <?php               endforeach;                                 ?>
                     </tbody>
@@ -187,7 +195,7 @@
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">Category</th>
-                            <th scope="col">Action</th>
+                            <th scope="col" class="text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -195,7 +203,15 @@
                         <tr>
                             <th scope="row"><?= $category['id'] ?></th>
                             <td><?= $category['category'] ?></td>
-                            <td class="text-center"><a href="">edit</a>|<a href="">delete</a></td>
+                            <td class="text-center align-middle">
+                                <a href="#" class="btn btn-success btn-sm btn-edit" data-id="<?= $category['id']?>" data-category="<?= $category['category'] ?>">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                |
+                                <a href="/products/delete_item/<?= $category['id'] ?>" class="delete btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete?');">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </td>
                         </tr>
 <?php               endforeach;                                 ?>
                     </tbody>
