@@ -5,7 +5,9 @@ class Admins extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('User_Model');
+        $this->load->model('Admin_Model');
         $this->load->model('Product_Model');
+        $this->load->model('Order_Model');
     }
 
     public function admin_login() {
