@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log In</title>
+    <title>E-Shoepify - Log In</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
@@ -23,7 +23,7 @@
         <header class="p-3 bg-dark text-white">
             <div class="container-fluid">
                 <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                    <a href="<?php base_url(); ?>" class="d-flex align-items-center mb-lg-0 text-white text-decoration-none">
+                    <a href="/" class="d-flex align-items-center mb-lg-0 text-white text-decoration-none">
                         <img src="<?php base_url() ?>/assets/images/cover.png" class="" width="150px" >
                     </a>
             
@@ -64,11 +64,11 @@
                                 <?php echo form_error('password'); ?>
                             </div>
                             <?=$this->session->flashdata('input_errors');?>
-                        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
+                        <button class="w-100 btn btn-lg btn-primary" type="submit">Log In</button>
                         
                         <hr class="my-4">
                         <p class="mb-0">Dont have an account?<a href="register">Register Now!</a></p>
-                        <p class="mb-0">Admin? <a href="admin/login">Login as Admin</a></p>
+                        <p class="mb-0">Admin? <a href="admin/login">Click here!</a></p>
                         </form>
                     </div>
                 </div>
