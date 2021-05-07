@@ -68,8 +68,8 @@ class Users extends CI_Controller {
         if(is_null($this->session->userdata('user_id'))){
             redirect('login');
         }else{
-        $this->load->view('Users/user_profile');
-    }
+            $this->load->view('Users/user_profile');
+        }
 
     public function save_profile(){
         $this->form_validation
