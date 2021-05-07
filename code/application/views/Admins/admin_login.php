@@ -19,6 +19,7 @@
                 <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?=$this->security->get_csrf_hash();?>" />
                 <div class="d-flex justify-content-center">
                     <img class="mb-4 mx-auto" src="<?php base_url() ?>/assets/images/cover.png" alt="" width="300" >
+                    <small class="lead">Admin</small>
                 </div>
 
                 <div class="mb-3">
@@ -36,6 +37,7 @@
                     
                     <input type="submit" class="btn btn-primary w-50" value="Log In">
                 </div>
+                <p class="text-white mt-2">Not Admin? <a href="/login" class="text-white">Click Here</a> </p>
                 <!-- <p class="mt-3">Dont have a seller account? <a href="/admin/register">Click here</a></p> -->
                
                 <p class="mt-3 mb-3 text-muted text-center">&copy; 2021</p>
