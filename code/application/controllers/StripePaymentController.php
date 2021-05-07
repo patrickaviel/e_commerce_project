@@ -13,8 +13,12 @@ class StripePaymentController extends CI_Controller {
 
     public function index()
     {
-        $data['mycart'] = $this->cart->contents();
-        $this->load->view('Products/checkout',$data);
+        if(is_null($this->session->userdata('user_id'))){
+            redirect('login');
+        }else{
+            $data['mycart'] = $this->cart->contents();
+            $this->load->view('Products/checkout',$data);
+        }
     }
 
     public function handlePayment()
