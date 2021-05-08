@@ -170,4 +170,24 @@ class Product_Model extends CI_Model {
         return $this->db->query($query,$values);
     }
 
+    function get_item_by_cat($category) {
+        // $query = "SELECT items.id, name, description,price,qty,image,categories.category, brands.brand FROM items 
+        //                 LEFT JOIN categories ON items.category_id = categories.id
+        //                 LEFT JOIN brands ON items.brand_id = brands.id
+        //                 WHERE categories.category LIKE %?% LIMIT 5";
+        // $values = array($this->security->xss_clean($category));
+        // return $this->db->query($query,$values)->result_array();
+        $this->db->select("items.id, name, description,price,qty,image,categories.category, brands.brand");
+        // from table 'athletes'
+        $this->db->from('items');
+        // INNER JOIN
+        $this->db->join('categories', 'items.category_id = categories.id', 'left');
+        $this->db->join('brands', ' items.brand_id = brands.id', 'left');
+        $this->db->like('category', $category);
+        $this->db->limit(5);
+        $query = $this->db->get_compiled_select();
+        // execute and return the query
+        return $this->db->query($query)->result_array();
+    }
+
 }
