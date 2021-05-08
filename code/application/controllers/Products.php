@@ -28,8 +28,9 @@ class Products extends CI_Controller {
         $this->load->view('Products/products_page',$data);
     }
 
-    public function item_page($id) {
+    public function item_page($id,$category) {
         $data['item'] = $this->Product_Model->get_item_by_id($id);
+        $data['likes'] = $this->Product_Model->get_item_by_cat($category);
         $this->load->view('Products/item_page',$data);
     }
     
@@ -99,6 +100,7 @@ class Products extends CI_Controller {
         $product_name = $this->input->post('name',TRUE);
 		$product_qty = $this->input->post('quantity',TRUE);
 		$product_price = $this->input->post('price',TRUE);
+        $product_category = $this->input->post('category',TRUE);
 		$prod_list = array(
 			'id'    => $product_id,
 			'name'  => $product_name,
@@ -107,7 +109,7 @@ class Products extends CI_Controller {
 		 );
 		$this->cart->insert($prod_list);
         $this->session->set_flashdata('success', "Added to cart!");
-		redirect('products/item_page/'.$product_id);
+		redirect('products/item_page/'.$product_id.'/'.$product_category);
 	}
 
     public function checkout() {
