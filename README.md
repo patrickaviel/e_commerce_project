@@ -1,5 +1,5 @@
 # E-Commerce (Capstone Project)
-An e-commerce web app built that allows user to add/delete/modify products and allows user to purchase/track their orders products.
+An e-commerce web app built that allows user to add/delete/modify products and allows user to purchase orders and track their orders.
  
  # Demo
 👉 Watch it <a href="https://youtu.be/GLepKkK6ZRc">here</a>.
