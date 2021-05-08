@@ -1,1 +1,1 @@
-# e_commerce_project
+# E-Commerce (Capstone Project)
