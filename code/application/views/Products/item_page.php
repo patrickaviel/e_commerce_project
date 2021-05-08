@@ -86,6 +86,7 @@
                                 <input type="hidden" name="prod_id" value="<?=$item['id']?>">
                                 <input type="hidden" name="name" value="<?=$item['name']?>">
                                 <input type="hidden" name="price" value="<?=$item['price']?>">
+                                <input type="hidden" name="category" value="<?=$item['category']?>">
                                 <h1 class="mb-3 display-6"><?=$item['name']?></h1>
                                 <p class="price-detail-wrap">
                                     <span class="price h3 text-warning">
@@ -146,18 +147,21 @@
                     <p class="fs-5">You might also like</p>
                     <div class="row row-cols-1 row-cols-md-5 mb-3 text-left">
                         <!-- card -->
-                        <div class="col mb-3">
-                            <div class="card rounded-3 shadow-sm cardss">
-                                <div class="card-body">
-                                    <img src="https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/9f5962a5-6eb6-46d4-b538-130e70618576/downshifter-10-running-shoe-CrpbbD.png"
+<?php               foreach($likes as $like){          ?>
+                        <div class="col mb-3 py-2">
+                            <div class="card rounded-3 shadow-sm cardss h-100">
+                                <div class="card-body ">
+                                <img src="<?=base_url('product_images/'.$like['image'])?>"
                                         class="rounded mx-auto d-block" alt="" width="100">
-                                    <ul class="list-unstyled mt-3">
-                                        <li class="lead">Nike Support IV</li>
-                                        <li class="fw-bold">$19.00</li>
+                                    <ul class="list-unstyled p-0">
+                                        <a href="/products/item_page/<?=$like['id']?>/<?=$like['category']?>" class="stretched-link"></a>
+                                        <li class="fw-light small"><?=$like['name']?></li>
                                     </ul>
                                 </div>
+                                <div class="card-footer bg-transparent border-secondary lead ">₱<?=number_format($like['price'],2)?></div>
                             </div>
                         </div>
+<?php           }                       ?>                        
 
                     </div>
 

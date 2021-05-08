@@ -103,7 +103,7 @@
                                     <div class="card-body ">
                                         <ul class="list-unstyled p-0">
                                             <small class="text-black-50"><?=$item['brand']?></small>
-                                            <a href="/products/item_page/<?=$item['id']?>" class="stretched-link"></a>
+                                            <a href="/products/item_page/<?=$item['id']?>/<?=$item['category']?>" class="stretched-link"></a>
                                             <li class="fw-light fw-normal"><?=$item['name']?></li>
                                         </ul>
                                     </div>
