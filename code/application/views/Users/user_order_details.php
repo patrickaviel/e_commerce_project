@@ -95,9 +95,9 @@
                         </div>
                         <div class="row border-end p-1">
                             <p class="m-0 lead">Billing Address:</p>
-                            <small class="ps-4"l>Patrick Aviel</small>
-                            <small class="ps-4">Address </small>
-                            <small class="ps-4">email</small>
+                            <small class="ps-4"l><?=$details['bill_fname']?>  <?=$details['bill_lname']?></small>
+                            <small class="ps-4"><?=$details['bill_address']?> <?=$details['bill_city']?> <?=$details['bill_state']?>, <?=$details['bill_zipcode']?></small>
+                            <small class="ps-4"><?= $this->session->userdata('user_email')?></small>
                         </div>
                     </div>
                     <div class="col-6">
