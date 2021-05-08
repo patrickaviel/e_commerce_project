@@ -7,12 +7,24 @@ class Users extends CI_Controller {
         $this->load->model('Order_Model');
         $this->load->model('User_Model');
     }
+
+    /*  DOCU: This function is responsible for showing the login page
+        Owner: Patrick
+    */
 	public function login_page() {
 		$this->load->view('users/user_login');
 	}
+
+    /*  DOCU: This function is responsible for showing the registration page
+        Owner: Patrick
+    */
     public function registration_page() {
 		$this->load->view('users/user_registration');
 	}
+
+    /*  DOCU: This function is triggered when the user registers their account
+        Owner: Patrick
+    */
     public function register() {
         $this->form_validation
             ->set_rules('email','Email','required|trim|valid_email|is_unique[users.email]')
@@ -38,6 +50,10 @@ class Users extends CI_Controller {
             redirect("products/products_page");
         } 
     }
+
+    /*  DOCU: This function is triggered when the user tries to login in the system
+        Owner: Patrick
+    */
     public function login() {
         $this->form_validation
             ->set_rules('email','Email','required|trim|valid_email')
@@ -65,6 +81,9 @@ class Users extends CI_Controller {
         } 
     }
 
+    /*  DOCU: This function is triggered when the user access their profiles
+        Owner: Patrick
+    */
     public function user_profile(){
         if(is_null($this->session->userdata('user_id'))){
             redirect('login');
@@ -73,6 +92,9 @@ class Users extends CI_Controller {
         }
     }
 
+    /*  DOCU: This function is triggered when the user registers their account
+        Owner: Patrick
+    */
     public function save_profile(){
         $this->form_validation
             ->set_rules('email','Email','required|trim|min_length[11]')
@@ -104,6 +126,9 @@ class Users extends CI_Controller {
         
     }
 
+    /*  DOCU: This function is triggered when the user access his/her orders
+        Owner: Patrick
+    */
     public function my_orders(){
         if(is_null($this->session->userdata('user_id'))){
             redirect('login');
@@ -113,6 +138,10 @@ class Users extends CI_Controller {
         }
     }
 
+    /*  DOCU: This function is triggered when the user logs out their account and 
+        redirects to the index 
+        Owner: Patrick
+    */
     public function logout() {
         $this->session->sess_destroy();
         redirect(base_url());   
