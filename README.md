@@ -12,7 +12,8 @@ An e-commerce web app built that allows user to add/delete/modify products and a
 
 ## Tech/framework used
 <b>Built with</b>
-- HTML
+- HTML,CSS
+- MySQL
 - [Bootstrap 5](https://getbootstrap.com/)
 - [php](https://www.php.net/)
 - [jQuery](https://jquery.com/)
