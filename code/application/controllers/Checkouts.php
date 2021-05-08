@@ -57,4 +57,10 @@ class Checkouts extends CI_Controller {
         $this->load->view('Users/user_order_details',$data);
     }
 
+    function view_order_admin($order_id) {
+        $data['items'] = $this->Order_Model->get_items_by_order($order_id);
+        $data['details'] = $this->Order_Model->get_ship_bill_details($order_id);
+        $this->load->view('Admins/admin_view_order',$data);
+    }
+
 }

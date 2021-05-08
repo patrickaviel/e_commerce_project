@@ -12,6 +12,7 @@ $route['admin/dashboard']               = 'admins/admin_dashboard';
 $route['admin/products']                = '/admins/admin_products';
 $route['admin/brands']                  = 'admins/admin_brands';
 $route['admin/users']                   = 'admins/admin_users';
+$route['order/(:num)']                  = '/checkouts/view_order_admin/$1';
 
 $route['logout']                        = 'users/logout';
 

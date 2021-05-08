@@ -83,82 +83,79 @@
         </header>
           <!-- Navbar End -->
 
-        <div class="position-relative overflow-hidden bg-light banner-bgs min-vh-100">
-        <!-- cards dashboard -->
-        <div class="container card-group d-flex justify-content-between p-3">
-            <div class="card rounded border border-dark mb-3" style="max-width: 18rem; min-height:11rem;">
-                <div class="card-body">
-                    <h1 class="display-5 card-title fw-bold"><?=$order_count['total_orders']?></h1>
-                    <p class="card-text lead">Total Orders</p>
-                </div>
-                <div class="card-footer d-flex justify-content-start align-items-center">
-                    <p class="m-0 p-0">More info <i class="fas fa-arrow-circle-right"></i></p>
-                </div>
-            </div>
-            <div class="card rounded border border-dark mb-3" style="max-width: 18rem; min-height:11rem;">
-                <div class="card-body">
-                    <h1 class="display-5 card-title fw-bold"><?=$item_count['total_items']?></h1>
-                    <p class="card-text lead">Items</p>
-                </div>
-                <div class="card-footer d-flex justify-content-center align-items-center">
-                    <p class="m-0 p-0">More info <i class="fas fa-arrow-circle-right"></i></p>
-                </div>
-            </div>
-            <div class="card rounded border border-dark mb-3" style="max-width: 18rem; min-height:11rem;">
-                <div class="card-body">
-                    <h1 class="display-5 card-title fw-bold"><?=$user_count['total_users']?></h1>
-                    <p class="card-text lead">User Registrations</p>
-                </div>
-                <div class="card-footer d-flex justify-content-center align-items-center">
-                    <p class="m-0 p-0">More info <i class="fas fa-arrow-circle-right"></i></p>
-                </div>
-            </div>
-        </div>
-        <!-- end cards dashboard -->
+          <div class="container p-5 heads mx-auto my-3">
+            <!-- <a href="/products/products_page" type="button" class="btn btn-danger mb-3"><i class="far fa-arrow-alt-circle-left"></i> Back</a> -->
+            <h1 class="display-5">Order Details</h1>
+            <!-- order box -->
 
-            <div class="container dashboard-table p-5 mt-2 mb-5">
-                <h2>Orders</h2>
-                <form action="" method="POST">
-                    <div class="row">
-                        <div class="col input-group mb-3">
-                            <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
-                            <input type="text" class="form-control" placeholder="Search" aria-label="Username" aria-describedby="basic-addon1">
+            <div class="container px-2 pt-2 pb-4 border">
+                <div class="container d-flex justify-content-between p-0">
+                    <p class="lead m-0 fs-4">Order <?=$details['id']?> </p>
+                    <small class="fw-light rounded-pill text-secondary px-2 text-center d-flex justify-content-center align-items-center fst-italic"><?=$details['status']?></small>
+                </div>
+                <div class="container d-flex justify-content-between p-0">
+                    <small class="text-muted d-block">Placed on <?=$details['order_date']?></small>
+                    
+                </div>
+                
+                <hr>
+<?php       foreach($items as $item):?>
+                <div class="row p-1 mt-1">
+                    <div class="col-2">
+                        <img src="<?=base_url('product_images/'.$item['image'])?>" alt="" height="120">
+                    </div>
+                    <div class="col-4 d-flex align-items-center">
+                        <?=$item['name']?>
+                    </div>
+                    <div class="col-3 d-flex align-items-center">
+                        <span class="text-muted">Qty</span>: <?=$item['qty']?>
+                    </div>
+                    <div class="col-3 d-flex align-items-center">
+                        ₱<?=number_format($item['price'],2)?>
+                    </div>
+                </div>
+<?php       endforeach;                                 ?>
+                <div class="row pt-4 px-1 mt-2">
+                    <div class="col-6">
+                        <div class="row border-end border-bottom p-1">
+                            <p class="m-0 lead">Shipping Address:</p>
+                            <small class="ps-4"><?=$details['ship_fname']?>  <?=$details['ship_lname']?></small>
+                            <small class="ps-4"><?=$details['ship_address']?> <?=$details['ship_city']?> <?=$details['ship_state']?>, <?=$details['ship_zipcode']?></small>
+                            <small class="ps-4"><?= $this->session->userdata('user_email')?></small>
                         </div>
-                        <div class="col">
-                            <select class="form-select w-25 select" aria-label="Default select example" >
-                                <option selected>Show All</option>
-                                <option value="1">Order In Process</option>
-                                <option value="2">Shipped</option>
-                                <option value="3">Cancelled</option>
-                            </select>
+                        <div class="row border-end p-1">
+                            <p class="m-0 lead">Billing Address:</p>
+                            <small class="ps-4"l><?=$details['bill_fname']?>  <?=$details['bill_lname']?></small>
+                            <small class="ps-4"><?=$details['bill_address']?> <?=$details['bill_city']?> <?=$details['bill_state']?>, <?=$details['bill_zipcode']?></small>
+                            <small class="ps-4"><?= $this->session->userdata('user_email')?></small>
                         </div>
-                      </div>
-                </form>
-                <!-- START TABLE -->
-                <div class="container mt-2">
-                    <table class="table table-borderless main">
-                        <thead>
-                            <tr class="head">
-                                <th scope="col">Order ID</th>
-                                <th scope="col">Customer</th>
-                                <th scope="col">Created</th>
-                                <th scope="col">Billing Address</th>
-                                <th scope="col">Total</th>
-                                <th scope="col">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody  id="orders">
+                    </div>
+                    <div class="col-6">
+                        <p class="lead">Total Summary:</p>
+                        <div class=" d-flex justify-content-between p-0">
+                            <small>Subtotal:</small>
+                            <small>₱<?=number_format($details['total'],2)?></small>
+                        </div>
+                        
+                        <div class=" d-flex justify-content-between p-0">
+                            <small>Shipping Fee: </small>
+                            <small>₱0.00</small>
+                        </div>
+                        
+                        <hr>
+                        <div class=" d-flex justify-content-between p-0">
+                            <p>Total(VAT Incl.)</p>
+                            <p class="fs-4">₱<?=number_format($details['total'],2)?></p>
+                        </div>
+                    </div>
 
-                        </tbody>
-                    </table>
                 </div>
-                <!-- END TABLE -->
+                
+                
             </div>
-            <footer class="container-fluid mt-2 d-flex justify-content-center align-items-center">
-                <p class="text-center">&copy; 2021 E-Shoepify, Inc. &middot;</p>
-            </footer>
-        </div>
 
+            <!-- order box end-->
+        </div>
         
     </div>
     <!-- main container end -->

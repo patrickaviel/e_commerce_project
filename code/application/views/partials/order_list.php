@@ -6,7 +6,7 @@
 
 <?php                   foreach($orders as $order):                   ?>
                             <tr class="rounded bg-white">
-                                <td class="order-color"><?=$order['id']?></td>
+                                <td class="order-color text-center"><a href="/order/<?=$order['id']?>" class="text-decoration-none fw-bold"><?=$order['id']?></a></td>
                                 <td><?=$order['name']?></td>
                                 <td><?=$order['created_at']?></td>
                                 <td><?=$order['bill_address']?> <?=$order['bill_city']?>, <?=$order['bill_state']?>, <?=$order['bill_zipcode']?></td>
