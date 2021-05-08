@@ -3,7 +3,7 @@
 <?php if ($this->session->flashdata('success')) { ?>
              <div class="alert alert-success"> <?= $this->session->flashdata('success') ?> </div>
 <?php } ?>
- 
+
 <?php                   foreach($orders as $order):                   ?>
                             <tr class="rounded bg-white">
                                 <td class="order-color"><?=$order['id']?></td>
