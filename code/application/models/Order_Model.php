@@ -75,8 +75,9 @@ class Order_Model extends CI_Model {
     }
 
     function update_item_inventory($item_id,$qty){
-        $query = "UPDATE items SET qty = qty - ? where id = ?";
+        $query = "UPDATE items SET qty = qty - ?, qty_sold = qty_sold + ? where id = ?";
         $values = array(
+            $this->security->xss_clean($qty),
             $this->security->xss_clean($qty),
             $this->security->xss_clean($item_id)
         );
